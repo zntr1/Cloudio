@@ -3,8 +3,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 #main{
     margin-left:300px;
     margin-top:43px;
+    background-color: #101010;
+    height: 100vh;
 
 }
+
+
 
 #mySidebar {
     z-index: 3;
@@ -16,7 +20,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     text-align: center;
 }
 
+
 #sidebarFooter{
     margin-top: 60% !important;
+    background-color: #3a3a3a;
 }
 
