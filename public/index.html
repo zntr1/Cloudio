@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
 <script src="../jquery-1.7.1.js"></script>
+
+
 <link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
 <title>Cloud.ia</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 <body class="w3-light-grey">
 
 <!-- Top container -->
-<div class="w3-bar w3-top w3-blue-gray w3-large" style="z-index:4">
+<div class="w3-bar w3-top w3-blue-gray w3-large" style="z-index:50">
     <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i
             class="fa fa-bars"></i>
     </button>
@@ -27,22 +34,27 @@
     </div>
     <hr/>
     <div class="w3-bar-block">
+
         <br>
         <a id="menuAccount" onclick="load_accountPage();" class="w3-bar-item w3-button w3-padding w3-blue-gray"><i
                 class="fa fa-users fa-fw"></i>  Mein Account</a>
-        <a id="menuData" onclick="load_storagePage();" class="w3-bar-item w3-button w3-padding"><i class="fa fa-files-o fa-fw"></i> 
+        <a id="menuData" onclick="load_storagePage();" class="w3-bar-item w3-button w3-padding"><i
+                class="fa fa-files-o fa-fw"></i> 
             Meine Dateien</a>
 
-        <a id="menuPermission" onclick="load_permissionsPage();" class="w3-bar-item w3-button w3-padding "><i class="fa fa-eye fa-fw"></i> 
+        <a id="menuPermission" onclick="load_permissionsPage();" class="w3-bar-item w3-button w3-padding "><i
+                class="fa fa-eye fa-fw"></i> 
             Freigabe</a>
-        <a id="menuPremium" onclick="load_premiumPage();" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i> 
+        <a id="menuPremium" onclick="load_premiumPage();" class="w3-bar-item w3-button w3-padding"><i
+                class="fa fa-diamond fa-fw"></i> 
             Premium</a>
-        <a id="menuSettings" onclick="load_settingsPage();" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i> 
+        <a id="menuSettings" onclick="load_settingsPage();" class="w3-bar-item w3-button w3-padding"><i
+                class="fa fa-cog fa-fw"></i> 
             Einstellungen</a><br>
         <hr>
-
         <a href="#" class="w3-bar-item w3-button w3-padding"
-           onclick="w3_close()" title="close menu"><i class="fa fa-angle-double-left"></i>  Verbergen</a>
+           onclick="w3_close()" title="close menu"><i class="fa fa-angle-double-left"></i>  Verbergen</a>
+
     </div>
 
 
@@ -52,75 +64,85 @@
     </footer>
 </nav>
 
-<!--<div id="#sidebarUser" class="w3-container w3-row" >-- Philipp suckt>
-<!--<div class="w3-col s4">-->
-<!--<img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">-->
-<!--</div>-->
-<!--<div class="w3-col s8 w3-bar">-->
-<!--<span>Welcome, <strong>Mike</strong></span><br>-->
-<!--<a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>-->
-<!--<a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>-->
-<!--<a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>-->
-<!--</div>-->
-<!--</div>-->
-
 <!-- !PAGE CONTENT! -->
 <div id="main" class="w3-main">
-    <p> Moin Bro, ich bin die Hauptseite</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                               placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
 
+                </form>
 
+            </div>
+        </div>
+    </div>
 </div>
-
-<script>
-
+    <script>
 
 
-    // Get the Sidebar
-    var mySidebar = document.getElementById("mySidebar");
-    var mainContent = document.getElementById("main");
-    // Get the DIV with overlay effect
-    var overlayBg = document.getElementById("myOverlay");
+        // Get the Sidebar
+        var mySidebar = document.getElementById("mySidebar");
+        var mainContent = document.getElementById("main");
+        // Get the DIV with overlay effect
+//        var overlayBg = document.getElementById("myOverlay");
 
-    // Toggle between showing and hiding the sidebar, and add overlay effect
-    function w3_open() {
-        if (mySidebar.style.display === 'block') {
-            mainContent.style.marginLeft = '0';
-            mySidebar.style.display = 'none';
-            overlayBg.style.display = "none";
-        } else {
-            mainContent.style.marginLeft = '300px';
-            mySidebar.style.display = 'block';
-            overlayBg.style.display = "block";
+        // Toggle between showing and hiding the sidebar, and add overlay effect
+        function w3_open() {
+            if (mySidebar.style.display === 'block') {
+                mainContent.style.marginLeft = '0';
+                mySidebar.style.display = 'none';
+//                overlayBg.style.display = "none";
+            } else {
+                mainContent.style.marginLeft = '300px';
+                mySidebar.style.display = 'block';
+//                overlayBg.style.display = "block";
+            }
         }
-    }
 
-    // Close the sidebar with the close button
-    function w3_close() {
-        mainContent.style.marginLeft = '0';
-        mySidebar.style.display = "none";
-        overlayBg.style.display = "none";
-    }
+        // Close the sidebar with the close button
+        function w3_close() {
+            mainContent.style.marginLeft = '0';
+            mySidebar.style.display = "none";
+    //            overlayBg.style.display = "none";
+        }
 
-    function load_settingsPage() {
-        document.getElementById("main").innerHTML = '<object type="text/html" data="settings.html" ></object>';
-    }
+        function load_settingsPage() {
+            document.getElementById("main").innerHTML = '<object type="text/html" data="settings.html" ></object>';
+        }
 
-    function load_permissionsPage() {
-        document.getElementById("main").innerHTML = '<object type="text/html" data="permissions.html" ></object>';
-    }
+        function load_permissionsPage() {
+            document.getElementById("main").innerHTML = '<object type="text/html" data="permissions.html" ></object>';
+        }
 
-    function load_premiumPage() {
-        document.getElementById("main").innerHTML = '<object type="text/html" data="premium.html" ></object>';
-    }
+        function load_premiumPage() {
+            document.getElementById("main").innerHTML = '<object type="text/html" data="premium.html" ></object>';
+        }
 
-    function load_storagePage() {
-        document.getElementById("main").innerHTML = '<object type="text/html" data="storage.html" ></object>';
-    }
+        function load_storagePage() {
+            document.getElementById("main").innerHTML = '<object type="text/html" data="storage.html" ></object>';
+        }
 
-    function load_accountPage() {
-        document.getElementById("main").innerHTML = '<object type="text/html" data="userprofile.html" ></object>';
-    }
-</script>
+        function load_accountPage() {
+            document.getElementById("main").innerHTML = '<object type="text/html" data="userprofile.html" ></object>';
+        }
+    </script>
 
 </body>
 </html>
