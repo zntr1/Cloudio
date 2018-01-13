@@ -26,3 +26,203 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     background-color: #3a3a3a;
 }
 
+
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.site-wrapper{
+    min-height: 100%;
+}
+
+
+
+
+#examples{
+    color: white;
+    background-color: #1a1a1a;
+}
+
+#footer{
+    bottom: 0px;
+    color: white;
+}
+
+.footerSpan{
+    color: green;
+    text-align: center;
+}
+
+.logo-small{
+    font-size: 50px;
+}
+
+.text-white{
+    color:white;
+}
+
+body{
+    background-color: #101010;
+}
+
+
+.button-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div img {
+    width: 100%;
+}
+/*.files input {*/
+/*outline: 2px dashed #92b0b3;*/
+/*outline-offset: -10px;*/
+/*-webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;*/
+/*transition: outline-offset .15s ease-in-out, background-color .15s linear;*/
+/*padding: 120px 0px 85px 35%;*/
+/*text-align: center !important;*/
+/*margin: 0;*/
+/*width: 100% !important;*/
+/*}*/
+/*.files input:focus{     outline: 2px dashed #92b0b3;  outline-offset: -10px;*/
+/*-webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;*/
+/*transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;*/
+/*}*/
+/*.files{ position:relative}*/
+/*.files:after {  pointer-events: none;*/
+/*position: absolute;*/
+/*top: 60px;*/
+/*left: 0;*/
+/*width: 50px;*/
+/*right: 0;*/
+/*height: 56px;*/
+/*content: "";*/
+/*background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);*/
+/*display: block;*/
+/*margin: 0 auto;*/
+/*background-size: 100%;*/
+/*background-repeat: no-repeat;*/
+/*}*/
+/*.color input{ background-color:#f1f1f1;}*/
+/*.files:before {*/
+/*position: absolute;*/
+/*bottom: 10px;*/
+/*left: 0;  pointer-events: none;*/
+/*width: 100%;*/
+/*right: 0;*/
+/*height: 57px;*/
+/*content: " or drag it here. ";*/
+/*display: block;*/
+/*margin: 0 auto;*/
+/*color: #2ea591;*/
+/*font-weight: 600;*/
+/*text-transform: capitalize;*/
+/*text-align: center;*/
+/*}*/
+.input-group{
+    margin-bottom: 10px;
+
+}
+
+.form-signin {
+    max-width: 350px;
+    margin: 0 auto;
+    padding-top: 30%;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    color: white;
+}
+
+
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+    margin: 1em 0 1em 10%;
+
+}
+
+.form-signin input[type="text"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-signin input[type="email"] {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+form p {
+    color:grey;
+}
+
+
+.foot{
+    position: fixed;
+    Width: 100%;
+    bottom: 0;
+    color: white;
+}
+
+
+#registrationForm {
+}
+
+input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+    background-color: #ffdddd;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #4CAF50;
+}
+
+/* Mark the active step: */
+.step.active {
+    opacity: 0.5;
+    background-color: yellow;
+}
+
+.tab{
+    display: none;
+}
