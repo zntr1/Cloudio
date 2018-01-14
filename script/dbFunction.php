@@ -38,9 +38,8 @@ class dbFunction
         $test = password_verify($password, $user["password"]);
         if ($user !== false && password_verify($password, $user['password'])) {
             $_SESSION['userId'] = $user['userId'];
-//            header("location: index.html");
-            $errorMessage = "E-Mail oder Passwort war richtig";
-            echo($errorMessage);
+            $_SESSION['userName'] = $user['userName'];
+            header("location: ../public/index.html");
         } else {
             $errorMessage = "E-Mail oder Passwort war ungültig";
             echo($errorMessage);
@@ -64,6 +63,7 @@ class dbFunction
             $registerStatement->bindParam(':genderId', $genderId);
             $registerStatement->bindParam(':postalCode', $postalCode);
             $registerResult = $registerStatement->execute();
+            mkdir("../userData/".$userName, 0700);
         } else {
             return false;
         }
