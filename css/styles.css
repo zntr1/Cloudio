@@ -6,7 +6,8 @@ body {
 }
 
 #main{
-    margin-left:300px;
+    position: relative !important;
+    margin-left: 15vw;
     margin-top: 5vh;
     height: 95vh;
 }
@@ -17,13 +18,30 @@ body {
     border-bottom: 2px solid white;
 }
 
+#header button{
+    height: 5vh;
+}
+
+#header button i{
+    color: white !important;
+}
+
+#header button:hover{
+    background-color: #c6602e!important;
+}
+
+
+
 #mySidebar {
     border-right: 2px solid white;
+    top: 5vh;
     height: 95vh;
     background-color: #414242;
     z-index: 3;
     width: 15vw;
     color: #fff !important;
+    position: fixed !important;
+    margin-right: 0;
 }
 
 #mySidebar h5 {
@@ -51,11 +69,11 @@ body {
 
 
 #sidebarFooter{
-    margin-top: 60% !important;
+    position: absolute;
     background-color: inherit;
     color: #fff !important;
-    float:bottom;
-    display:flex;
+    width: 100%;
+    bottom: 0px;
 }
 
 
@@ -77,7 +95,6 @@ body {
 }
 
 #footer{
-    bottom: 0px;
 
 }
 

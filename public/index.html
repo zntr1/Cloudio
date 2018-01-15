@@ -20,7 +20,7 @@
 
 <!-- Top container -->
 <div id="header" class="w3-bar w3-top" style="z-index:50">
-    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i
+    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none header-button" onclick="w3_open();"><i
             class="fa fa-bars"></i>
     </button>
     <span class="w3-bar-item w3-right"><a href="index.html">Cloud.io</a></span>
@@ -37,17 +37,14 @@
 
         <br>
         <a id="menuAccount" onclick="load_accountPage();" class="w3-bar-item w3-button w3-padding"><i
-                class="fa fa-users fa-fw"></i>  Mein Account</a>
+                class="fa fa-user fa-fw"></i>  Mein Account</a>
         <a id="menuData" onclick="load_storagePage();" class="w3-bar-item w3-button w3-padding"><i
-                class="fa fa-files-o fa-fw"></i> 
+                class="fa fa-folder fa-fw"></i> 
             Meine Dateien</a>
         <br>
         <a id="menuPermission" onclick="load_permissionsPage();" class="w3-bar-item w3-button w3-padding "><i
-                class="fa fa-eye fa-fw"></i> 
+                class="fa fa-cloud-upload fa-fw"></i> 
             Dateien hochladen</a>
-        <!--<a id="menuPremium" onclick="load_premiumPage();" class="w3-bar-item w3-button w3-padding"><i-->
-                <!--class="fa fa-diamond fa-fw"></i> -->
-            <!--Premium</a>-->
         <br>
         <a id="menuSettings" onclick="load_settingsPage();" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Einstellungen</a><br>
         <hr>
@@ -83,7 +80,7 @@
                 mySidebar.style.display = 'none';
 //                overlayBg.style.display = "none";
             } else {
-                mainContent.style.marginLeft = '300px';
+                mainContent.style.marginLeft = '15vw';
                 mySidebar.style.display = 'block';
 //                overlayBg.style.display = "block";
             }
