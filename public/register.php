@@ -1,3 +1,6 @@
+<?php
+require_once '../script/dbConfig.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +25,8 @@
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use>
                 </svg>
                 <span class="hidden">Vorname</span></label>
-            <input id="registration_firstName" type="text" name="firstName" class="form__input" placeholder="Vorname" required>
+            <input id="registration_firstName" type="text" name="firstName" class="form__input" placeholder="Vorname"
+                   required>
         </div>
         <div class="form__field">
             <label for="registration_surName">
@@ -30,7 +34,8 @@
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use>
                 </svg>
                 <span class="hidden">Nachname</span></label>
-            <input id="registration_surName" type="text" name="lastName" class="form__input" placeholder="Nachname" required>
+            <input id="registration_surName" type="text" name="lastName" class="form__input" placeholder="Nachname"
+                   required>
         </div>
         <div class="form__field">
             <label for="registration_username">
@@ -38,7 +43,8 @@
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use>
                 </svg>
                 <span class="hidden">Benutzename</span></label>
-            <input id="registration_username" type="text" name="username" class="form__input" placeholder="Benutzername" required>
+            <input id="registration_username" type="text" name="username" class="form__input" placeholder="Benutzername"
+                   required>
         </div>
 
         <div class="form__field">
@@ -57,7 +63,8 @@
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use>
                 </svg>
                 <span class="hidden">Passwort bestätigen</span></label>
-            <input id="registration_password2" type="password" name="submitPassword" class="form__input" placeholder="Passwort bestätigen"
+            <input id="registration_password2" type="password" name="submitPassword" class="form__input"
+                   placeholder="Passwort bestätigen"
                    required>
         </div>
         <div class="form__field">
@@ -82,7 +89,8 @@
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use>
                 </svg>
                 <span class="hidden">Adresse</span></label>
-            <input id="registration_address" type="text" name="address" class="form__input" placeholder="Adresse" required>
+            <input id="registration_address" type="text" name="address" class="form__input" placeholder="Adresse"
+                   required>
         </div>
         <div class="form__field">
             <label for="registration_birthday">
@@ -90,19 +98,18 @@
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use>
                 </svg>
                 <span class="hidden">Postleitzahl</span></label>
-            <input id="registration_birthday" type="text" name="birthday" class="form__input" placeholder="Geburtsdatum" required>
+            <input id="registration_birthday" type="text" name="birthday" class="form__input" placeholder="Geburtsdatum"
+                   required>
         </div>
 
-        <!--<div class="form__field">-->
-        <!--<label for="registration_gender"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Geschlecht</span></label>-->
+        <div class="form__field">
+        <label for="registration_gender"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Geschlecht</span></label>
         <select class="selectpicker" name="gender" title="Geschlecht">
             <?php
-            require_once '../script/dbConfig.php';
-            $options = $dbFunction->getGenderData();
-            echo $options;
+            echo $dbFunction->getGenderData();
             ?>
         </select>
-        <!--</div>-->
+        </div>
 
 
         <div class="form__field">
