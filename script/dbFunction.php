@@ -63,7 +63,7 @@ class dbFunction
             $registerStatement->bindParam(':genderId', $genderId);
             $registerStatement->bindParam(':postalCode', $postalCode);
             $registerResult = $registerStatement->execute();
-            mkdir("../userData/".$userName, 0700);
+            mkdir("../userData/" . $userName, 0700);
         } else {
             return false;
         }
@@ -92,11 +92,11 @@ class dbFunction
 
     public function checkUserName($userName)
     {
-        $checkStatement = $this->dbCon->prepare("SELECT * FROM tab_user where userName = :userName");
-        $checkStatement->bindParam(':userName', $userName);
-        $checkResult = $checkStatement->execute();
-        $checkFetch = $checkStatement->fetch($checkResult);
-        if (!$checkFetch) {
+        $checkUserNameStatement = $this->dbCon->prepare("SELECT * FROM tab_user where userName = :userName");
+        $checkUserNameStatement->bindParam(':userName', $userName);
+        $checkUserNameResult = $checkUserNameStatement->execute();
+        $checkUserNameFetch = $checkUserNameStatement->fetch($checkUserNameResult);
+        if (!$checkUserNameFetch) {
             return true;
         } else {
             return false;
@@ -113,5 +113,28 @@ class dbFunction
             $options = $options . "<option>" . $row['gender'] . "</option>";
         }
         return $options;
+    }
+
+    public function addGender($gender)
+    {
+        $addGenderStatement = $this->dbCon->prepare("INSERT INTO tab_gender(gender) VALUES (:gender)");
+        if ($this->checkGenderName($gender)) {
+            $addGenderStatement->bindParam(':gender', $gender);
+            $addGenderResult = $addGenderStatement->execute();
+            header("Refresh:0; url=../public/register.php");
+        }
+    }
+
+    public function checkGenderName($gender)
+    {
+        $checkGenderStatement = $this->dbCon->prepare("SELECT * FROM tab_gender where gender = :gender");
+        $checkGenderStatement->bindParam(':gender', $gender);
+        $checkGenderResult = $checkGenderStatement->execute();
+        $checkGenderFetch = $checkGenderStatement->fetch($checkGenderResult);
+        if (!$checkGenderFetch) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
