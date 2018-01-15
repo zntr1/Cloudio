@@ -17,13 +17,8 @@ class dbFunction
         $this->dbCon = $dbConnection;
 
     }
-//Für die Registrierung braucht man Benutzernamen, Vorname, Nachname, Passwort, E-Mail-Adresse, Adresse, Geschlecht und Geburtsdatum
-//	Der Benutzername und die E-Mail-Adresse müssen eindeutig sein
-//	Keines der oben genannten Felder soll optional sein
-//	Nutzername, Vorname und Nachname sollen eine maximale Länge haben
 //	Die E-Mail muss einem E-Mail Regex entsprechen
 //	Passwort: mindestens 8 Zeichen, ein Kleinbuchstabe, ein Großbuchstabe eine Zahl und ein Sonderzeichen
-//Nach der Registrierung kann man sich einloggen
     public $emailRegex = "";
     public $pwRegex = "";
 
