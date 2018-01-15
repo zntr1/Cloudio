@@ -29,15 +29,18 @@ class dbFunction
         $user = $statement->fetch();
 
         //check PW
-//    if ($user !== false && password_verify($password, $user['password'])) {
+        //    if ($user !== false && password_verify($password, $user['password'])) {
         $test = password_verify($password, $user["password"]);
+
+
         if ($user !== false && password_verify($password, $user['password'])) {
             $_SESSION['userId'] = $user['userId'];
             $_SESSION['userName'] = $user['userName'];
             header("location: ../public/index.html");
         } else {
-            $errorMessage = "E-Mail oder Passwort war ungültig";
-            echo($errorMessage);
+            header("location: ../public/login.html#wrong-login");
+//            $errorMessage = "E-Mail oder Passwort war ungültig";
+//            echo($errorMessage);
         }
     }
 
