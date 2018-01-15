@@ -3,11 +3,11 @@
 <script src="../jquery-1.7.1.js"></script>
 
 
-<link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<link rel="stylesheet" href="../css/styles.css">
 
 
 <title>Cloud.ia</title>
@@ -19,7 +19,7 @@
 <body>
 
 <!-- Top container -->
-<div class="w3-bar w3-top w3-blue-gray w3-large" style="z-index:50">
+<div id="header" class="w3-bar w3-top" style="z-index:50">
     <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i
             class="fa fa-bars"></i>
     </button>
@@ -28,7 +28,7 @@
 
 
 <!-- Sidebar/menu -->
-<nav id="mySidebar" class="w3-sidebar w3-collapse w3-white w3-animate-left"><br>
+<nav id="mySidebar" class="w3-sidebar w3-collapse w3-animate-left"><br>
     <div class="w3-container">
         <h5>Dashboard</h5>
     </div>
@@ -36,7 +36,7 @@
     <div class="w3-bar-block">
 
         <br>
-        <a id="menuAccount" onclick="load_accountPage();" class="w3-bar-item w3-button w3-padding w3-blue-gray"><i
+        <a id="menuAccount" onclick="load_accountPage();" class="w3-bar-item w3-button w3-padding"><i
                 class="fa fa-users fa-fw"></i>  Mein Account</a>
         <a id="menuData" onclick="load_storagePage();" class="w3-bar-item w3-button w3-padding"><i
                 class="fa fa-files-o fa-fw"></i> 
@@ -59,13 +59,13 @@
 
 
     <!-- Footer -->
-    <footer id="sidebarFooter" class="w3-container w3-padding-16 w3-white" style="text-align: center;">
+    <footer id="sidebarFooter" class="w3-container w3-padding-16" style="text-align: center;">
         <p> © 2017 - Cloud.io </p>
     </footer>
 </nav>
 
 <!-- !PAGE CONTENT! -->
-<div id="main" class="w3-main">
+<div id="main" >
 
 </div>
     <script>

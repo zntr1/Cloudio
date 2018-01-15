@@ -1,18 +1,29 @@
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
-#main{
-    margin-left:300px;
-    margin-top:43px;
-    background-color: #101010;
-    height: 100vh;
-
+body {
+    background-color: #262528;
+    color: white;
 }
 
+#main{
+    margin-left:300px;
+    margin-top: 5vh;
+    height: 95vh;
+}
 
+#header{
+    height: 5vh;
+    background-color: #df632f;
+    border-bottom: 2px solid white;
+}
 
 #mySidebar {
+    border-right: 2px solid white;
+    height: 95vh;
+    background-color: #414242;
     z-index: 3;
-    width: 300px;
+    width: 15vw;
+    color: #fff !important;
 }
 
 #mySidebar h5 {
@@ -20,10 +31,29 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     text-align: center;
 }
 
+#mySidebar i {
+    color: #e2e2e2;
+}
+
+#mySidebar i:hover {
+    color: #df632f;
+}
+
+.w3-button:hover{
+    background-color: #a8aaaa !important;
+    font-weight: 700 !important;
+    color: black !important;
+}
+
+.w3-button:hover i{
+    color: #df632f !important;
+}
+
 
 #sidebarFooter{
     margin-top: 60% !important;
-    background-color: #3a3a3a;
+    background-color: inherit;
+    color: #fff !important;
 }
 
 
@@ -46,7 +76,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 #footer{
     bottom: 0px;
-    color: white;
+
 }
 
 .footerSpan{
@@ -62,9 +92,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     color:white;
 }
 
-body{
-    background-color: #101010;
-}
 
 
 .button-wrapper {
