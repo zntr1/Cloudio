@@ -54,6 +54,8 @@ body {
     margin-top: 60% !important;
     background-color: inherit;
     color: #fff !important;
+    float:bottom;
+    display:flex;
 }
 
 
