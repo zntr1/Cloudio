@@ -8,11 +8,20 @@ require_once '../script/readFileSystem.php';
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-<ul>
-    <?php
-        readFileSystem();
-    ?>
-</ul>
+
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul>
+                    <?php
+                    readFileSystem();
+                    ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 
