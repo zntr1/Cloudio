@@ -9,7 +9,7 @@ body {
     position: relative !important;
     margin-left: 15vw;
     margin-top: 5vh;
-    height: 95vh;
+    height: 95vh !important;
 }
 
 #header{
@@ -30,6 +30,13 @@ body {
     background-color: #c6602e!important;
 }
 
+hr {
+
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+
+}
 
 
 #mySidebar {

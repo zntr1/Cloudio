@@ -3,10 +3,10 @@
 <script src="../jquery-1.7.1.js"></script>
 
 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <link rel="stylesheet" href="../css/styles.css">
 
 
@@ -36,18 +36,22 @@
     <div class="w3-bar-block">
 
         <br>
-        <a id="menuAccount" onclick="load_accountPage();" class="w3-bar-item w3-button w3-padding"><i
+        <a id="menuAccount" class="w3-bar-item w3-button w3-padding"><i
                 class="fa fa-user fa-fw"></i>  Mein Account</a>
-        <a id="menuData" onclick="load_storagePage();" class="w3-bar-item w3-button w3-padding"><i
+
+        <a id="menuDownload" class="w3-bar-item w3-button w3-padding"><i
                 class="fa fa-folder fa-fw"></i> 
             Meine Dateien</a>
         <br>
-        <a id="menuPermission" onclick="load_permissionsPage();" class="w3-bar-item w3-button w3-padding "><i
+
+        <a id="menuUpload" class="w3-bar-item w3-button w3-padding "><i
                 class="fa fa-cloud-upload fa-fw"></i> 
             Dateien hochladen</a>
+
         <br>
-        <a id="menuSettings" onclick="load_settingsPage();" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Einstellungen</a><br>
+        <a id="menuSettings"  class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Einstellungen</a><br>
         <hr>
+
         <a href="#" class="w3-bar-item w3-button w3-padding"
            onclick="w3_close()" title="close menu"><i class="fa fa-angle-double-left fa-fw"></i>  Verbergen</a>
 
@@ -62,10 +66,9 @@
 
 <!-- !PAGE CONTENT! -->
 <div id="main" >
-
+    <iframe id="frame" width="100%" height="100%" frameborder="0" src=""></iframe>
 </div>
     <script>
-
 
         // Get the Sidebar
         var mySidebar = document.getElementById("mySidebar");
@@ -93,25 +96,37 @@
     //            overlayBg.style.display = "none";
         }
 
-        function load_settingsPage() {
-            document.getElementById("main").innerHTML = '<object type="text/html" data="settings.html" ></object>';
-        }
+        // Mein Acc-Button ruft userprofile-page
+        $(document).ready( function() {
+            $("#menuAccount").on("click", function() {
+                $("#frame").attr("src","userProfilePage.html");
+            });
+        });
 
-        function load_permissionsPage() {
-            document.getElementById("main").innerHTML = '<object type="text/html" data="permissions.html" ></object>';
-        }
+        // Meine Dateien-Button ruft downloadPage auf
+        $(document).ready( function() {
+            $("#menuDownload").on("click", function() {
+                $("#frame").attr("src","downloadPage.php");
+            });
+        });
 
-        function load_premiumPage() {
-            document.getElementById("main").innerHTML = '<object type="text/html" data="premium.html" ></object>';
-        }
+        // Datei Hochladen-Button ruft Upload-page
+        $(document).ready( function() {
+            $("#menuUpload").on("click", function() {
+                $("#frame").attr("src","uploadPage.php");
+            });
+        });
 
-        function load_storagePage() {
-            document.getElementById("main").innerHTML = '<object type="text/html" data="storage.html" ></object>';
-        }
+        // Settingsbutton ruft Settings-page
+        $(document).ready( function() {
+            $("#menuSettings").on("click", function() {
+                $("#frame").attr("src","userSettingsPage.html");
+                // $("#main").load("userProfilePage.html");
+            });
+        });
 
-        function load_accountPage() {
-            document.getElementById("main").innerHTML = '<object type="text/html" data="userprofile.html" ></object>';
-        }
+
+
     </script>
 
 </body>
