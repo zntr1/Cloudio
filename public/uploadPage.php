@@ -3,23 +3,70 @@
 <head>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/contentStyles.css">
-    <link rel="stylesheet" href="../css/styles.css"></head>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
 
 <body>
-
 <div id="content">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <form action="../script/upload.php" method="post" enctype="multipart/form-data">
-                    Datei zum hochladen:
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                    <input type="submit" value="Hochladen" name="submit">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Upload Files</strong>
+                <small>Bootstrap files upload</small>
+            </div>
+            <div class="panel-body">
+
+                <!-- Standar Form -->
+                <h4>Select files from your computer</h4>
+                <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <input type="file" name="files[]" id="js-upload-files" multiple>
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+                    </div>
                 </form>
+
+                <!-- Drop Zone -->
+                <h4>Or drag and drop files below</h4>
+                <div class="upload-drop-zone" id="drop-zone">
+                    Just drag and drop files here
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                         aria-valuemax="100" style="width: 60%;">
+                        <span class="sr-only">60% Complete</span>
+                    </div>
+                </div>
+
+                <!-- Upload Finished -->
+                <div class="js-upload-finished">
+                    <h3>Processed files</h3>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-success"><span
+                                    class="badge alert-success pull-right">Success</span>image-01.jpg</a>
+                        <a href="#" class="list-group-item list-group-item-success"><span
+                                    class="badge alert-success pull-right">Success</span>image-02.jpg</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </div> <!-- /container -->
 </div>
+
+
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12">-->
+<!--                <form action="../script/upload.php" method="post" enctype="multipart/form-data">-->
+<!--                    Datei zum hochladen:-->
+<!--                    <input type="file" name="fileToUpload" id="fileToUpload">-->
+<!--                    <input type="submit" value="Hochladen" name="submit">-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
 
 </body>
