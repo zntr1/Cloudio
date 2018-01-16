@@ -5,8 +5,7 @@
  * Date: 16.01.2018
  * Time: 09:15
  */
-
-
+session_start();
 $userName = $_SESSION['userName'];
 $path = '../userData/' . $userName;
 $uploadDir = $path;

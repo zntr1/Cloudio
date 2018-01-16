@@ -42,8 +42,6 @@ class dbFunction
             header("location: ../public/index.html");
         } else {
             header("location: ../public/login.html#wrong-login");
-//            $errorMessage = "E-Mail oder Passwort war ungültig";
-//            echo($errorMessage);
         }
     }
 
