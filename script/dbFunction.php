@@ -59,7 +59,7 @@ class dbFunction
             $registerStatement->bindParam(':genderId', $genderId);
             $registerStatement->bindParam(':postalCode', $postalCode);
             $registerResult = $registerStatement->execute();
-            mkdir("../userData/" . $userName, 0700);
+            mkdir("../userData/" . $userName, 0777);
             $this->userLogin($userName, $password);
         } else {
             return false;
