@@ -12,22 +12,24 @@
 </head>
 
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>PHP - Multiple Image upload using dropzone.js</h2>
-            <form action="../script/upload2.php" enctype="multipart/form-data" class="dropzone" id="image-upload">
-                <div>
-                    <h3>Upload Multiple Image By Click On Box</h3>
-                </div>
-            </form>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2> Dateien zum hochladen unten ins Feld ziehen!</h2>
+                <form action="../script/upload2.php" enctype="multipart/form-data" class="dropzone" id="image-upload">
+                    <div>
+                        <h3>Upload Multiple Image By Click On Box</h3>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
     Dropzone.options.imageUpload = {
-        maxFilesize:1,
+        maxFilesize: 1,
         acceptedFiles: ".jpeg,.jpg,.png,.gif, .txt"
     };
 </script>

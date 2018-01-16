@@ -8,13 +8,11 @@
 session_start();
 $userName = $_SESSION['userName'];
 $path = '../userData/' . $userName;
-$uploadDir = $path;
 
 if (!empty($_FILES)) {
     $tmpFile = $_FILES['file']['tmp_name'];
     $filename = $path.'/'. $_FILES['file']['name'];
     move_uploaded_file($tmpFile,$filename);
 }
-
 
 ?>
