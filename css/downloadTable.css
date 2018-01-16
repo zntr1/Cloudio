@@ -21,6 +21,21 @@ table{
     width: 100%;
 }
 
+table tr:first-child:hover{
+
+}
+
 table tr:hover{
-    background-color: green !important;
+    background-color: #3d3c40  !important;
+}
+
+table a{
+    text-decoration: none !important;
+    color: #df632f;
+}
+
+table a:hover{
+    text-decoration: none !important;
+    color: white;
+    font-weight: 600;
 }

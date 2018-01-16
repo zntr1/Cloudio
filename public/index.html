@@ -24,7 +24,7 @@
 <body id="background">
 <!-- Top container -->
 <div id="header" class="w3-bar w3-top" style="z-index:50">
-    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none header-button" onclick="w3_open();"><i class="fa fa-bars"></i> &nbsp;Cloudio </button>
+    <button id="menuButton" class="w3-bar-item w3-button w3-hide-large w3-hover-none header-button" onclick="w3_open();"><i class="fa fa-bars"></i> &nbsp;Cloudio </button>
 
     <a id="userLogout" href="../script/logout.php" class="w3-bar-item w3-hide-large w3-right"><i class="fa fa-sign-out"></i> Ausloggen!</a>
 
@@ -148,15 +148,10 @@
 
         $(function() {
             $("#userLabel").html("<i class=\"fa fa-user\"></i> &nbsp;"+ $.cookie("username"));
-        });
+            $("#frame").attr("src","downloadPage.php");
+            $("#menuButton").click();
 
-        $(document).ready( function() {
-            if($.cookie("username").contains("undefined")){
-                alert("lol");
-                window.location = "../public/login.html";
-            }
         });
-
 
     </script>
 
