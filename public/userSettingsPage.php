@@ -37,12 +37,12 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
                                required>
                     </div>
 
-                    <!--   // Passwort-->
+                    <!--   // Aktuelles Passwort-->
                     <div class="form-group">
                         <label for="settings_old_password">Aktuelles Passwort</label>
                         <input id="settings_old_password" type="password" name="oldPassword" class="form-control"
                                placeholder="Aktuelles Passwort.."
-                               value="<?php echo 'noch nichts implemented??' ?>" required>
+                               value="" required>
                     </div>
 
                     <!--   // Passwort-->
@@ -50,7 +50,7 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
                         <label for="settings_new_password">Neues Passwort</label>
                         <input id="settings_new_password" type="password" name="newPassword" class="form-control"
                                placeholder="Passwort ändern.."
-                               value="<?php echo 'noch nichts implemented??' ?>" required>
+                               value="" required>
                     </div>
 
                     <!--      // Passwort 2-->
@@ -58,7 +58,7 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
                         <label for="settings_password2">Passwort wiederholen</label>
                         <input id="settings_password2" type="password" name="submitNewPassword" class="form-control"
                                placeholder="Passwort wiederholen.."
-                               value="<?php echo 'noch nichts implemented??' ?>" required>
+                               value="" required>
                     </div>
 
                     <!--     Email-->
