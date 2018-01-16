@@ -9,7 +9,8 @@ body {
     position: relative !important;
     margin-left: 15vw;
     margin-top: 5vh;
-    height: 95vh !important;
+    height: 94.5vh;
+    width: 85vw;
 }
 
 #header{
