@@ -20,6 +20,24 @@ body {
     border-bottom: 2px solid white;
 }
 
+.header-button{
+    color: white !important;
+    background-color: #df632f;
+    font-weight: 500;
+    font-size: 18px;
+    padding-left: 1em;
+    height: 5vh;
+    vertical-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.header-button:hover{
+    color: white !important;
+    background-color: #df632f;
+    font-weight: 600;
+}
+
 #header button{
     height: 5vh;
 }
@@ -54,7 +72,7 @@ hr {
 }
 
 #mySidebar h5 {
-    font-size: 18pt;
+    font-size: 30px;
     text-align: center;
 }
 
@@ -64,6 +82,10 @@ hr {
 
 #mySidebar i:hover {
     color: #df632f;
+}
+
+#mySidebar a {
+    font-size: 18px;
 }
 
 

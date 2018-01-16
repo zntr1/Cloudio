@@ -24,9 +24,7 @@
 <body id="background">
 <!-- Top container -->
 <div id="header" class="w3-bar w3-top" style="z-index:50">
-    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none header-button" onclick="w3_open();"><i
-            class="fa fa-bars"></i>
-    </button>
+    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none header-button" onclick="w3_open();"><i class="fa fa-bars"></i> &nbsp;Cloudio </button>
 
     <a id="userLogout" href="../script/logout.php" class="w3-bar-item w3-hide-large w3-right"><i class="fa fa-sign-out"></i> Ausloggen!</a>
 
@@ -94,10 +92,12 @@
         function w3_open() {
             if (mySidebar.style.display === 'block') {
                 mainContent.style.marginLeft = '0';
+                mainContent.style.width = '100vw';
                 mySidebar.style.display = 'none';
 //                overlayBg.style.display = "none";
             } else {
                 mainContent.style.marginLeft = '15vw';
+                mainContent.style.width = '85vw';
                 mySidebar.style.display = 'block';
 //                overlayBg.style.display = "block";
             }
@@ -106,6 +106,7 @@
         // Close the sidebar with the close button
         function w3_close() {
             mainContent.style.marginLeft = '0';
+            mainContent.style.width = '100vw';
             mySidebar.style.display = "none";
     //            overlayBg.style.display = "none";
         }
