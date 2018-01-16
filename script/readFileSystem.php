@@ -17,7 +17,7 @@ function readFileSystem()
             if ($entry != "." && $entry != "..") {
                 clearstatcache();
                 $date = date("d.m.Y h:i:s", filemtime($path . $entry));
-                echo "<tr><td>$counter</td><td><a href='../script/download.php=??????????????????'>$entry</a></td><td>$date</td><td>$userName</td></tr>";
+                echo "<tr><td>$counter</td><td><a href='../script/download.php?file=$entry'>$entry</a></td><td>$date</td><td>$userName</td></tr>";
                 $counter++;
             }
 

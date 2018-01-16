@@ -29,10 +29,12 @@ class dbFunction
         $user = $statement->fetch();
 
         if ($user !== false && password_verify($password, $user['password'])) {
+            $folderId = $this->getFolderId($user['userName']);
             $_SESSION['userId'] = $user['userId'];
             $_SESSION['userName'] = $user['userName'];
+            $_SESSION['folderId'] = $folderId;
             $sessionId = session_id();
-            $date_of_expiry = time() + 3600*48;
+            $date_of_expiry = time() + 3600 * 48;
             setcookie("username", "$username", $date_of_expiry, "/");
             setcookie("sessionId", "$sessionId", $date_of_expiry, "/");
             header("location: ../public/index.html");
@@ -60,6 +62,7 @@ class dbFunction
             $registerStatement->bindParam(':genderId', $genderId);
             $registerStatement->bindParam(':postalCode', $postalCode);
             $registerResult = $registerStatement->execute();
+            $this->createFolder($userName);
             mkdir("../userData/" . $userName, 0700);
             $this->userLogin($userName, $password);
         } else {
@@ -73,6 +76,34 @@ class dbFunction
         $genderIdStatement->bindParam(':gender', $gender);
         $genderIdResult = $genderIdStatement->execute();
         return $genderIdStatement->fetch($genderIdResult);
+    }
+
+    public function getFolderId($name)
+    {
+        $getFolderIdStatement = $this->dbCon->prepare("SELECT folderId FROM tab_folder WHERE foldername = :folder");
+        $getFolderIdStatement->bindParam(':folder', $name);
+        $getFolderIdResult = $getFolderIdStatement->execute();
+        return $getFolderIdStatement->fetch($getFolderIdResult)['folderId'];
+    }
+
+    public function crateFolder($userName)
+    {
+        $createFolderStatement = $this->dbCon->prepare("INSERT INTO tab_folder(foldername) VALUES (:foldername)");
+        $createFolderStatement->bindParam(':foldername', $userName);
+        $createFolderResult = $createFolderStatement->execute();
+    }
+
+    public function createFile($fileName)
+    {
+        $createFileStatement = $this->dbCon->prepare("INSERT INTO tab_file(filename,parentfolderId) VALUES (:filename,:parentfolderId)");
+        $createFileStatement->bindParam(':filename', $fileName);
+        $test = $_SESSION['folderId'];
+        $createFileStatement->bindParam(':parentfolderId', $test);
+        $createFileResult = $createFileStatement->execute();
+        $fileId = $this->dbCon->lastInsertId();
+        $userId = $_SESSION['userId'];
+        $createFileUserPropertyStatement = $this->dbCon->prepare("INSERT INTO tab_file_has_tab_user(tab_file_fileId, tab_user_userId) VALUES($fileId,$userId)");
+        $createFileUserPropertyResult = $createFileUserPropertyStatement->execute();
     }
 
     public function checkMail($email)
@@ -157,7 +188,7 @@ class dbFunction
         return $checkGenderFetch;
     }
 
-    public function updateUserData($oldPassword,$firstName,$lastName,$email,$address,$postalCode,$gender)
+    public function updateUserData($oldPassword, $firstName, $lastName, $email, $address, $postalCode, $gender)
     {
         $userId = $_SESSION['userId'];
         $statement = $this->dbCon->prepare("SELECT * FROM tab_user WHERE userId = :userId");
@@ -179,7 +210,8 @@ class dbFunction
         }
     }
 
-    public function updatePassword($oldPassword,$newPassword) {
+    public function updatePassword($oldPassword, $newPassword)
+    {
         $userId = $_SESSION['userId'];
         $statement = $this->dbCon->prepare("SELECT * FROM tab_user WHERE userId = :userId");
         $updatePasswordStatement = $this->dbCon->prepare("UPDATE tab_user SET password = :password WHERE userId = :userId");
