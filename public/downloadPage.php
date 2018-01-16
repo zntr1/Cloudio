@@ -36,6 +36,7 @@ require_once '../script/readFileSystem.php';
                             <th>Dateiname</th>
                             <th>Hochgeladen</th>
                             <th>Ersteller</th>
+                            <th>Größe</th>
                             <th>Löschen</th>
                         </tr>
                         </thead>

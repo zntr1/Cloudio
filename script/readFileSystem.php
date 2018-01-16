@@ -17,7 +17,16 @@ function readFileSystem()
             if ($entry != "." && $entry != "..") {
                 clearstatcache();
                 $date = date("d.m.Y H:i:s", filemtime($path . $entry));
-                echo "<tr><td>$counter</td><td><a href='../script/download.php?file=$entry'>$entry</a></td><td>$date</td><td>$userName</td><td><a href='../script/deleteFile.php?file=$entry'>Löschen</a></td></tr>";
+
+                $size = filesize($path.$entry).' Byte';
+                echo "<tr>
+                        <td>$counter</td>
+                        <td><a href='../script/download.php?file=$entry'>$entry</a></td>
+                        <td>$date</td>
+                        <td>$userName</td>
+                        <td>$size</td>
+                        <td><a href='../script/deleteFile.php?file=$entry'>Löschen</a></td>
+                     </tr>";
                 $counter++;
             }
 
