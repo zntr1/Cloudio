@@ -50,6 +50,8 @@
 
         <br>
         <a id="menuSettings"  class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Einstellungen</a><br>
+        <br>
+        <a id="logout"  class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Logout</a><br>
         <hr>
 
         <a href="#" class="w3-bar-item w3-button w3-padding"
@@ -122,6 +124,12 @@
             $("#menuSettings").on("click", function() {
                 $("#frame").attr("src","userSettingsPage.php");
                 // $("#main").load("userProfilePage.html");
+            });
+        });
+        // Logoutbutton loggt user aus
+        $(document).ready( function() {
+            $("#logout").on("click", function() {
+                $("#frame").attr("src","../script/logout.php");
             });
         });
 
