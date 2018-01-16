@@ -40,7 +40,7 @@ function readFileSystem()
                         <td>$date</td>
                         <td>$userName</td>
                         <td>$size</td>
-                        <td><a href='../script/deleteFile.php?file=$entry'>Löschen</a></td>
+                        <td><a class='fa fa-close fa-lg red' href='../script/deleteFile.php?file=$entry'></a></td>
                      </tr>";
                 $counter++;
             }

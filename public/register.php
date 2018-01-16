@@ -10,7 +10,7 @@ require_once '../script/dbConfig.php';
 
     <link rel="stylesheet" href="../css/contentStyles.css">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -114,8 +114,7 @@ require_once '../script/dbConfig.php';
         <input type="submit" value="Registrieren">
     </div>
 
-    <p class="text--center">Schon registriert? <a style="color: orange;" href="../public/login.html"> &nbsp; Logge dich ein!
-            <i class="fa fa-sign-in fa-lg"></i> </a>
+    <p class="text--center">Schon registriert? &nbsp;&nbsp;<a style="color: orange;" href="../public/login.html">Logge dich ein! &nbsp;<i class="fa fa-sign-in fa-lg"></i> </a>
 
     </p>
 </div>

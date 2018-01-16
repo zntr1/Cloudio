@@ -24,9 +24,9 @@
 <body id="background">
 <!-- Top container -->
 <div id="header" class="w3-bar w3-top" style="z-index:50">
-    <button id="menuButton" class="w3-bar-item w3-button w3-hide-large w3-hover-none header-button" onclick="w3_open();"><i class="fa fa-bars"></i> &nbsp;Cloudio </button>
+    <button style="font-weight: 600;" id="menuButton" class="w3-bar-item w3-button w3-hide-large w3-hover-none header-button" onclick="w3_open();"><i class="fa fa-bars"></i> &nbsp;Cloudio </button>
 
-    <a id="userLogout" href="../script/logout.php" class="w3-bar-item w3-hide-large w3-right"><i class="fa fa-sign-out"></i> Ausloggen!</a>
+    <a id="userLogout" href="../script/logout.php" class="w3-bar-item w3-hide-large w3-right"><i class="fa fa-sign-out fa-lg"></i> Ausloggen!</a>
 
     <label id="userLabel" class="w3-bar-item w3-hide-large w3-right"><i class="fa fa-bars"></i> Guest</label>
 
@@ -45,31 +45,29 @@
 
         <br>
         <a id="menuAccount" class="w3-bar-item w3-button w3-padding"><i
-                class="fa fa-user fa-fw"></i>  Mein Account</a>
+                class="fa fa-user fa-fw fa-lg"></i> &nbsp;Mein Account</a>
 
         <a id="menuDownload" class="w3-bar-item w3-button w3-padding"><i
-                class="fa fa-folder fa-fw"></i> 
-            Meine Dateien</a>
+                class="fa fa-folder fa-fw fa-lg"></i> &nbsp;Meine Dateien</a>
         <br>
 
         <a id="menuUpload" class="w3-bar-item w3-button w3-padding "><i
-                class="fa fa-cloud-upload fa-fw"></i> 
-            Dateien hochladen</a>
+                class="fa fa-cloud-upload fa-fw fa-lg"></i> &nbsp;Dateien hochladen</a>
 
         <br>
-        <a id="menuSettings"  class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Einstellungen</a><br>
+        <a id="menuSettings"  class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw fa-lg"></i> &nbsp;Einstellungen</a><br>
         <br>
-        <a id="menuLogout" href="../script/logout.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-sign-off"></i>  Logout</a><br>
+        <a id="menuLogout" href="../script/logout.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw fa-lg"></i> &nbsp;Logout</a><br>
         <hr>
 
         <a href="#" class="w3-bar-item w3-button w3-padding"
-           onclick="w3_close()" title="close menu"><i class="fa fa-angle-double-left fa-fw"></i>  Verbergen</a>
+           onclick="w3_close()" title="close menu"><i class="fa fa-angle-double-left fa-fw fa-lg"></i> &nbsp;Verbergen</a>
 
     </div>
 
 
     <!-- Footer -->
-    <footer id="sidebarFooter" class="w3-container w3-padding-16" style="text-align: center;">
+    <footer id="sidebarFooter" class="w3-container w3-padding-16" style="">
         <p> © 2017 - Cloud.io </p>
     </footer>
 </nav>

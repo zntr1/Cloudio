@@ -14,6 +14,7 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    top:-15vh;
     position: relative;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -232,10 +233,10 @@ form label {
 form {
 
     display: inline;
-    max-width: 50vw;
-    max-heigth: 50vh;
-    width: 50vw;
-    height: 50vh;
+    max-width: 30vw;
+    max-heigth: 30vh;
+    width: 30vw;
+    height: 28vh;
     position: relative;
 }
 

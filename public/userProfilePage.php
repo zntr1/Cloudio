@@ -50,8 +50,8 @@ $totalStats = getFolderSize();
         <div class="row">
             <div class="col-lg-12">
 
-                <h2>Gesamte Hochgeladene Größe: <?php echo $totalStats[0] ?></h2>
-                <h2>Gesamte Dateien: <?php echo $totalStats[1] ?></h2>
+                <h2>Gesamtupload: <?php echo $totalStats[0] ?></h2>
+                <h2>Anzahl Dateien: <?php echo $totalStats[1] ?></h2>
 
             </div>
         </div>
