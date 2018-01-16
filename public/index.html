@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <script src="../jquery-1.7.1.js"></script>
+<script src="../jquery.cookie.js"></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" href="../css/bootstrap.min.css">-->
@@ -13,15 +15,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 
+<script>
+    if ($.cookie("username") == null || $.cookie("sessionId") == null) {
+        location.href = "../public/login.html";
+    }
+</script>
 
 <body id="background">
-
 <!-- Top container -->
 <div id="header" class="w3-bar w3-top" style="z-index:50">
     <button class="w3-bar-item w3-button w3-hide-large w3-hover-none header-button" onclick="w3_open();"><i
             class="fa fa-bars"></i>
     </button>
-    <span class="w3-bar-item w3-right"><a href="index.html">Cloud.io</a></span>
+
+    <a id="userLogout" href="../script/logout.php" class="w3-bar-item w3-hide-large w3-right"><i class="fa fa-sign-out"></i> Ausloggen!</a>
+
+    <label id="userLabel" class="w3-bar-item w3-hide-large w3-right"><i class="fa fa-bars"></i> Guest</label>
+
+
+    <!--<span class="w3-bar-item w3-right"><a href="index.html">Cloud.io</a></span>-->
 </div>
 
 
@@ -69,6 +81,8 @@
     <iframe id="frame" width="100%" height="100%" frameborder="0" src=""></iframe>
 </div>
     <script>
+
+
 
         // Get the Sidebar
         var mySidebar = document.getElementById("mySidebar");
@@ -131,6 +145,23 @@
             });
         });
 
+        $(document).ready( function() {
+            $("#logout").on("click", function() {
+                $("#frame").attr("src","../script/logout.php");
+            });
+        });
+
+
+        $(function() {
+            $("#userLabel").html("<i class=\"fa fa-user\"></i> &nbsp;"+ $.cookie("username"));
+        });
+
+        $(document).ready( function() {
+            if($.cookie("username").contains("undefined")){
+                alert("lol");
+                window.location = "../public/login.html";
+            }
+        });
 
 
     </script>

@@ -1,5 +1,6 @@
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
+
 body {
     background-color: #262528;
     color: white;
@@ -65,10 +66,41 @@ hr {
     color: #df632f;
 }
 
+
+#userLabel{
+    font-weight: 500;
+    font-size: 18px;
+    padding-right: 1em;
+    height: 5vh;
+    vertical-align: center;
+}
+
+
+#userLogout{
+    color: white;
+    background-color: #df632f;
+    font-weight: 500;
+    font-size: 18px;
+    padding-right: 1em;
+    height: 5vh;
+    vertical-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+#userLogout:hover{
+
+    font-weight: 600;
+
+}
+
+
+
 .w3-button:hover{
     background-color: #a8aaaa !important;
     font-weight: 700 !important;
-    color: black !important;
+    color: black ;
 }
 
 .w3-button:hover i{
