@@ -5,7 +5,7 @@
  * Date: 11.01.2018
  * Time: 15:46
  */
-setcookie("test","test",3600);
+setcookie("test", "test", 3600);
 session_start();
 
 //Hier sind alle Datenbankfunktionen hinterlegt
@@ -28,17 +28,12 @@ class dbFunction
         $result = $statement->execute(array('userName' => $username));
         $user = $statement->fetch();
 
-        //check PW
-        //    if ($user !== false && password_verify($password, $user['password'])) {
-        $test = password_verify($password, $user["password"]);
-
-
         if ($user !== false && password_verify($password, $user['password'])) {
             $_SESSION['userId'] = $user['userId'];
             $_SESSION['userName'] = $user['userName'];
             $sessionId = session_id();
-            setcookie("username","$username",false,"/",false);
-            setcookie("sessionId","$sessionId",false,"/",false);
+            setcookie("username", "$username", false, "/", false);
+            setcookie("sessionId", "$sessionId", false, "/", false);
             header("location: ../public/index.html");
         } else {
             header("location: ../public/login.html#wrong-login");
@@ -51,6 +46,8 @@ class dbFunction
         if ($this->checkMail($email) && $this->checkUserName($userName)) {
             $genderFetch = $this->getGenderId($gender);
             $genderId = $genderFetch["genderId"];
+            $formattedBirthday = strtotime($birthday);
+            $formattedBirthday = date("Y-m-d H:i:s", $formattedBirthday);
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $registerStatement->bindParam(':userName', $userName);
             $registerStatement->bindParam(':firstName', $firstName);
@@ -58,12 +55,12 @@ class dbFunction
             $registerStatement->bindParam(':password', $hashedPassword);
             $registerStatement->bindParam(':email', $email);
             $registerStatement->bindParam(':address', $address);
-            $registerStatement->bindParam(':birthday', $birthday);
+            $registerStatement->bindParam(':birthday', $formattedBirthday);
             $registerStatement->bindParam(':genderId', $genderId);
             $registerStatement->bindParam(':postalCode', $postalCode);
             $registerResult = $registerStatement->execute();
             mkdir("../userData/" . $userName, 0700);
-            $this->userLogin($userName,$password);
+            $this->userLogin($userName, $password);
         } else {
             return false;
         }
@@ -103,14 +100,16 @@ class dbFunction
         }
     }
 
-    public function getGenderData()
+    public function getGenderData($actualGender)
     {
         $options = "";
         $statement = $this->dbCon->prepare("SELECT gender FROM tab_gender");
         $result = $statement->execute();
 
         while ($row = $statement->fetch($result)) {
-            $options = $options . "<option>" . $row['gender'] . "</option>";
+            if ($actualGender !== $row['gender']) {
+                $options = $options . "<option>" . $row['gender'] . "</option>";
+            }
         }
         return $options;
     }
@@ -135,6 +134,62 @@ class dbFunction
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function getGenderById($genderId)
+    {
+        $getGenderIdStatement = $this->dbCon->prepare("SELECT gender FROM tab_gender where genderId = :genderId");
+        $getGenderIdStatement->bindParam(':genderId', $genderId);
+        $getGenderIdResult = $getGenderIdStatement->execute();
+        $getGenderIdFetch = $getGenderIdStatement->fetch($getGenderIdResult);
+        return $getGenderIdFetch['gender'];
+    }
+
+    public function getUserDataForSettings()
+    {
+        $userId = $_SESSION['userId'];
+        $getUserDataStatement = $this->dbCon->prepare("SELECT firstName,lastName,email,address,postalcode,genderId from tab_user where userId = :userId");
+        $getUserDataStatement->bindParam(':userId', $userId);
+        $getUserDataResult = $getUserDataStatement->execute();
+        $checkGenderFetch = $getUserDataStatement->fetch($getUserDataResult);
+        return $checkGenderFetch;
+    }
+
+    public function updateUserData($oldPassword,$firstName,$lastName,$email,$address,$postalCode,$gender)
+    {
+        $userId = $_SESSION['userId'];
+        $statement = $this->dbCon->prepare("SELECT * FROM tab_user WHERE userId = :userId");
+        $updateUserDataStatement = $this->dbCon->prepare("UPDATE tab_user SET firstName = :firstName, lastName = :lastName,email = :email, address = :address,postalcode = :postalCode, genderId = :genderId WHERE userId = :userId");
+        $result = $statement->execute(array('userId' => $userId));
+        $user = $statement->fetch();
+        if ($user !== false && password_verify($oldPassword, $user['password'])) {
+            $genderFetch = $this->getGenderId($gender);
+            $genderId = $genderFetch["genderId"];
+            $updateUserDataStatement->bindParam(':userId', $userId);
+            $updateUserDataStatement->bindParam(':firstName', $firstName);
+            $updateUserDataStatement->bindParam(':lastName', $lastName);
+            $updateUserDataStatement->bindParam(':email', $email);
+            $updateUserDataStatement->bindParam(':address', $address);
+            $updateUserDataStatement->bindParam(':genderId', $genderId);
+            $updateUserDataStatement->bindParam(':postalCode', $postalCode);
+            $updateUserDataResult = $updateUserDataStatement->execute();
+            header("location: ../public/index.html");
+        }
+    }
+
+    public function updatePassword($oldPassword,$newPassword) {
+        $userId = $_SESSION['userId'];
+        $statement = $this->dbCon->prepare("SELECT * FROM tab_user WHERE userId = :userId");
+        $updatePasswordStatement = $this->dbCon->prepare("UPDATE tab_user SET password = :password WHERE userId = :userId");
+        $result = $statement->execute(array('userId' => $userId));
+        $user = $statement->fetch();
+        if ($user !== false && password_verify($oldPassword, $user['password'])) {
+            $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+            $updatePasswordStatement->bindParam(':userId', $userId);
+            $updatePasswordStatement->bindParam(':password', $hashedPassword);
+            $updatePasswordResult = $updatePasswordStatement->execute();
+            header("location: ../public/index.html");
         }
     }
 }
