@@ -5,7 +5,7 @@
  * Date: 11.01.2018
  * Time: 15:46
  */
-
+setcookie("test","test",3600);
 session_start();
 
 //Hier sind alle Datenbankfunktionen hinterlegt
@@ -36,6 +36,9 @@ class dbFunction
         if ($user !== false && password_verify($password, $user['password'])) {
             $_SESSION['userId'] = $user['userId'];
             $_SESSION['userName'] = $user['userName'];
+            $sessionId = session_id();
+            setcookie("username","$username",false,"/",false);
+            setcookie("sessionId","$sessionId",false,"/",false);
             header("location: ../public/index.html");
         } else {
             header("location: ../public/login.html#wrong-login");
@@ -62,6 +65,7 @@ class dbFunction
             $registerStatement->bindParam(':postalCode', $postalCode);
             $registerResult = $registerStatement->execute();
             mkdir("../userData/" . $userName, 0700);
+            $this->userLogin($userName,$password);
         } else {
             return false;
         }
