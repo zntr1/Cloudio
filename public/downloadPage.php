@@ -42,7 +42,7 @@ require_once '../script/readFileSystem.php';
                         </thead>
                         <tbody>
                         <?php
-                        readFileSystem();
+                        readFileSystem($fileArray);
                         ?>
                         </tbody>
                     </table>

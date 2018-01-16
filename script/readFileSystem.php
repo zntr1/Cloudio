@@ -5,9 +5,9 @@
  * Date: 15.01.2018
  * Time: 08:24
  */
-session_start();
-// Schleife über alle Dateien im Ordner
 
+require_once '../script/dbConfig.php';
+$fileArray = $dbFunction->getAllowedFiles();
 function formatBytes($bytes)
 {
     $precision = 2;
@@ -21,8 +21,13 @@ function formatBytes($bytes)
     return round($bytes, $precision) . ' ' . $units[$pow];
 }
 
-function readFileSystem()
+// Schleife über alle Dateien im Ordner
+
+function readFileSystem($fileArray)
 {
+    $foldersUsed = array();
+    $files = array($fileArray[0]);
+    $folders = array($fileArray[1]);
     $counter = 1;
     $userName = $_SESSION['userName'];
     $path = '../userData/' . $userName . '/';

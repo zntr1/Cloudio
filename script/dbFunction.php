@@ -86,6 +86,14 @@ class dbFunction
         return $getFolderIdStatement->fetch($getFolderIdResult)['folderId'];
     }
 
+    public function getFolderById($id)
+    {
+        $getFolderByIdStatement = $this->dbCon->prepare("SELECT foldername FROM tab_folder WHERE folderId = :folderId");
+        $getFolderByIdStatement->bindParam(':folderId', $id);
+        $getFolderByIdResult = $getFolderByIdStatement->execute();
+        return $getFolderByIdStatement->fetch($getFolderByIdResult)['foldername'];
+    }
+
     public function crateFolder($userName)
     {
         $createFolderStatement = $this->dbCon->prepare("INSERT INTO tab_folder(foldername) VALUES (:foldername)");
@@ -180,6 +188,7 @@ class dbFunction
 
     public function getUserDataForSettings()
     {
+        $this->getAllowedFiles();
         $userId = $_SESSION['userId'];
         $getUserDataStatement = $this->dbCon->prepare("SELECT firstName,lastName,email,address,postalcode,genderId from tab_user where userId = :userId");
         $getUserDataStatement->bindParam(':userId', $userId);
@@ -224,5 +233,29 @@ class dbFunction
             $updatePasswordResult = $updatePasswordStatement->execute();
             header("location: ../public/index.html");
         }
+    }
+
+    public function getAllowedFiles()
+    {
+        $allFolderNames = array();
+        $parentFolderOfFiles = array();
+        $getFileStatement = $this->dbCon->prepare("SELECT filename,parentfolderId FROM tab_file WHERE fileId = :fileId");
+        $userId = $_SESSION['userId'];
+        $getAllowedFileNamesStatement = $this->dbCon->prepare("SELECT * FROM tab_file_has_tab_user WHERE tab_user_userId = $userId");
+        $getAllowedFileNamesResult = $getAllowedFileNamesStatement->execute();
+        $fileIds = $getAllowedFileNamesStatement->fetchAll();
+        foreach ($fileIds as $value) {
+            $fileId = $value['tab_file_fileId'];
+            $getFileStatement->bindParam(':fileId', $fileId);
+            $getFileResult = $getFileStatement->execute();
+            $getFileFetch = $getFileStatement->fetch($getFileResult);
+            $folderName = $this->getFolderById($getFileFetch['parentfolderId']);
+            if (!in_array($folderName, $allFolderNames)) {
+                array_push($allFolderNames, $folderName);
+                $parentFolderOfFiles[$folderName] = array();
+            }
+            array_push($parentFolderOfFiles[$folderName], $getFileFetch['filename']);
+        }
+        return [$allFolderNames, $parentFolderOfFiles];
     }
 }
