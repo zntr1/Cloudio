@@ -32,8 +32,9 @@ class dbFunction
             $_SESSION['userId'] = $user['userId'];
             $_SESSION['userName'] = $user['userName'];
             $sessionId = session_id();
-            setcookie("username", "$username", false, "/", false);
-            setcookie("sessionId", "$sessionId", false, "/", false);
+            $date_of_expiry = time() + 3600 ;
+            setcookie("username", "$username", $date_of_expiry, "/");
+            setcookie("sessionId", "$sessionId", $date_of_expiry, "/");
             header("location: ../public/index.html");
         } else {
             header("location: ../public/login.html#wrong-login");

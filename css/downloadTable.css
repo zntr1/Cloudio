@@ -20,3 +20,7 @@
 table{
     width: 100%;
 }
+
+table tr:hover{
+    background-color: green !important;
+}
