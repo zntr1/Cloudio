@@ -190,7 +190,6 @@ class dbFunction
 
     public function getUserDataForSettings()
     {
-        $this->getAllowedFiles();
         $userId = $_SESSION['userId'];
         $getUserDataStatement = $this->dbCon->prepare("SELECT firstName,lastName,email,address,postalcode,genderId from tab_user where userId = :userId");
         $getUserDataStatement->bindParam(':userId', $userId);
@@ -259,5 +258,30 @@ class dbFunction
             array_push($parentFolderOfFiles[$folderName], $getFileFetch['filename']);
         }
         return [$allFolderNames, $parentFolderOfFiles];
+    }
+
+    public function getFileId($file, $folderId)
+    {
+        $getFileIdStatement = $this->dbCon->prepare("SELECT fileId from tab_file WHERE filename = :file AND parentfolderId = :folderId");
+        $getFileIdStatement->bindParam(':file', $file);
+        $getFileIdStatement->bindParam(':folderId', $folderId);
+        $getFileIdResult = $getFileIdStatement->execute();
+        $getFileIdFetch = $getFileIdStatement->fetch($getFileIdResult);
+        return $getFileIdFetch['fileId'];
+    }
+
+    public function deleteFile($file)
+    {
+        $folderId = $_SESSION['folderId'];
+        $fileId = $this->getFileId($file, $folderId);
+        $deleteFileStatement = $this->dbCon->prepare("DELETE FROM tab_file WHERE fileId = $fileId");
+        $this->deleteFileFromZTab($fileId);
+        $deleteFileResult = $deleteFileStatement->execute();
+    }
+
+    public function deleteFileFromZTab($fileId)
+    {
+        $deleteFileStatement = $this->dbCon->prepare("DELETE FROM tab_file_has_tab_user WHERE tab_file_fileId = $fileId");
+        $deleteFileResult = $deleteFileStatement->execute();
     }
 }
