@@ -25,7 +25,7 @@ function formatBytes($bytes)
 
 function readFileSystem($fileArray)
 {
-    $foldersUsed = array();
+    $userName = $_SESSION['userName'];
     $folders = $fileArray[0];
     $files = $fileArray[1];
     $counter = 1;
@@ -44,9 +44,11 @@ function readFileSystem($fileArray)
                         <td><a href='../script/download.php?file=$entry'>$entry</a></td>
                         <td>$date</td>
                         <td>$folder</td>
-                        <td>$size</td>
-                        <td><a class='fa fa-close fa-lg red' href='../script/deleteFile.php?file=$entry'></a></td>
-                     </tr>";
+                        <td>$size</td>";
+                        if($userName === $folder) {
+                        echo "<td><a class='fa fa-close fa-lg red' href='../script/deleteFile.php?file=$entry'></a></td>";
+                        }
+                     echo "</tr>";
                     $counter++;
                 }
 
