@@ -16,7 +16,7 @@ function getFolderSize()
         }
         $size = formatBytes($size);
     }
-    return [$size,$count];
+    return [$size, $count];
 }
 
 function formatBytes($bytes)

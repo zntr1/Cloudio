@@ -11,11 +11,11 @@ $userName = $_SESSION['userName'];
 $path = '../userData/' . $userName . '/';
 $file = basename($_GET['file']);
 
-if(!$file){ // file does not exist
+if (!$file) { // file does not exist
     die('file not found');
 } else {
     // delete the file from disk
     $dbFunction->deleteFile($file);
-    unlink($path.$file);
+    unlink($path . $file);
     header("location: ../public/downloadPage.php");
 }

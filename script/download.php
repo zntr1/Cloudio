@@ -9,9 +9,9 @@ session_start();
 $userName = $_SESSION['userName'];
 $path = '../userData/' . $userName . '/';
 $file = basename($_GET['file']);
-$contentType = mime_content_type($path.$file);
+$contentType = mime_content_type($path . $file);
 
-if(!$file){ // file does not exist
+if (!$file) { // file does not exist
     die('file not found');
 } else {
     header("Cache-Control: public");
@@ -21,5 +21,5 @@ if(!$file){ // file does not exist
     header("Content-Transfer-Encoding: binary");
 
     // read the file from disk
-    readfile($path.$file);
+    readfile($path . $file);
 }

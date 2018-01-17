@@ -33,7 +33,7 @@ function readFileSystem($fileArray)
         $path = '../userData/' . $folder . '/';
         if ($openFolder = opendir($path)) {
             while (false !== ($entry = readdir($openFolder))) {
-                if ($entry != "." && $entry != ".." && in_array($entry,$files[$folder])) {
+                if ($entry != "." && $entry != ".." && in_array($entry, $files[$folder])) {
                     clearstatcache();
                     $date = date("d.m.Y H:i:s", filemtime($path . $entry));
 
@@ -45,10 +45,10 @@ function readFileSystem($fileArray)
                         <td>$date</td>
                         <td>$folder</td>
                         <td>$size</td>";
-                        if($userName === $folder) {
+                    if ($userName === $folder) {
                         echo "<td><a class='fa fa-close fa-lg red' href='../script/deleteFile.php?file=$entry'></a></td>";
-                        }
-                     echo "</tr>";
+                    }
+                    echo "</tr>";
                     $counter++;
                 }
 

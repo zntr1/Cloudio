@@ -5,8 +5,8 @@
  * Date: 14.01.2018
  * Time: 19:58
  */
-setcookie("sessionId","",time()-100,"/");
-setcookie("username","",time()-100,"/");
+setcookie("sessionId", "", time() - 100, "/");
+setcookie("username", "", time() - 100, "/");
 
 session_start();
 session_destroy();

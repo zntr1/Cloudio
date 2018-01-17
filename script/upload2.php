@@ -13,8 +13,8 @@ $path = '../userData/' . $userName;
 if (!empty($_FILES)) {
     $dbFunction->createFile($_FILES['file']['name']);
     $tmpFile = $_FILES['file']['tmp_name'];
-    $filename = $path.'/'. $_FILES['file']['name'];
-    move_uploaded_file($tmpFile,$filename);
+    $filename = $path . '/' . $_FILES['file']['name'];
+    move_uploaded_file($tmpFile, $filename);
 }
 
 ?>

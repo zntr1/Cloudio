@@ -9,8 +9,8 @@
 require_once '../script/dbConfig.php';
 
 
-if(isset( $_POST['username']) && isset($_POST['password'])) {
-    $dbFunction->userLogin($_POST['username'],$_POST['password']);
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $dbFunction->userLogin($_POST['username'], $_POST['password']);
 
 }
 ?>
