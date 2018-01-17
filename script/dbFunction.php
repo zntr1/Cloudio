@@ -155,11 +155,14 @@ class dbFunction
 
     public function addGender($gender)
     {
-        $addGenderStatement = $this->dbCon->prepare("INSERT INTO tab_gender(gender) VALUES (:gender)");
         if ($this->checkGenderName($gender)) {
-            $addGenderStatement->bindParam(':gender', $gender);
-            $addGenderResult = $addGenderStatement->execute();
-            header("Refresh:0; url=../public/register.php");
+
+            $addGenderStatement = $this->dbCon->prepare("INSERT INTO tab_gender(gender) VALUES (:gender)");
+            if ($this->checkGenderName($gender)) {
+                $addGenderStatement->bindParam(':gender', $gender);
+                $addGenderResult = $addGenderStatement->execute();
+                header("Refresh:0; url=../public/register.php");
+            }
         }
     }
 
