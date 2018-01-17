@@ -5,7 +5,6 @@
  * Date: 11.01.2018
  * Time: 15:46
  */
-setcookie("test", "test", 3600);
 session_start();
 
 //Hier sind alle Datenbankfunktionen hinterlegt
@@ -94,7 +93,7 @@ class dbFunction
         return $getFolderByIdStatement->fetch($getFolderByIdResult)['foldername'];
     }
 
-    public function crateFolder($userName)
+    public function createFolder($userName)
     {
         $createFolderStatement = $this->dbCon->prepare("INSERT INTO tab_folder(foldername) VALUES (:foldername)");
         $createFolderStatement->bindParam(':foldername', $userName);
