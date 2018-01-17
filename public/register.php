@@ -5,7 +5,7 @@ require_once '../script/dbConfig.php';
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Registrierung</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/contentStyles.css">
@@ -56,7 +56,7 @@ require_once '../script/dbConfig.php';
 
 
         <div class="form__field">
-            <label for="registration_password2">
+            <label for="registration_password2">k
             </label>
             <input id="registration_password2" type="password" name="submitPassword" class="form__input"
                    placeholder="Passwort wiederholen"
