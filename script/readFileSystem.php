@@ -26,33 +26,59 @@ function formatBytes($bytes)
 function readFileSystem($fileArray)
 {
     $foldersUsed = array();
-    $files = array($fileArray[0]);
-    $folders = array($fileArray[1]);
+    $folders = $fileArray[0];
+    $files = $fileArray[1];
     $counter = 1;
-    $userName = $_SESSION['userName'];
-    $path = '../userData/' . $userName . '/';
-    if ($folder = opendir('../userData/' . $userName . '/')) {
-        while (false !== ($entry = readdir($folder))) {
-            if ($entry != "." && $entry != "..") {
-                clearstatcache();
-                $date = date("d.m.Y H:i:s", filemtime($path . $entry));
+    foreach ($folders as $folder) {
+        $path = '../userData/' . $folder . '/';
+        if ($openFolder = opendir($path)) {
+            while (false !== ($entry = readdir($openFolder))) {
+                if ($entry != "." && $entry != ".." && in_array($entry,$files[$folder])) {
+                    clearstatcache();
+                    $date = date("d.m.Y H:i:s", filemtime($path . $entry));
 
-                $size = filesize($path . $entry);
-                $size = formatBytes($size);
-                echo "<tr>
+                    $size = filesize($path . $entry);
+                    $size = formatBytes($size);
+                    echo "<tr>
                         <td>$counter</td>
                         <td><a href='../script/download.php?file=$entry'>$entry</a></td>
                         <td>$date</td>
-                        <td>$userName</td>
+                        <td>$folder</td>
                         <td>$size</td>
                         <td><a class='fa fa-close fa-lg red' href='../script/deleteFile.php?file=$entry'></a></td>
                      </tr>";
-                $counter++;
-            }
+                    $counter++;
+                }
 
+            }
+            closedir($openFolder);
         }
-        closedir($folder);
     }
+//    $counter = 1;
+//    $userName = $_SESSION['userName'];
+//    $path = '../userData/' . $userName . '/';
+//    if ($folder = opendir('../userData/' . $userName . '/')) {
+//        while (false !== ($entry = readdir($folder))) {
+//            if ($entry != "." && $entry != "..") {
+//                clearstatcache();
+//                $date = date("d.m.Y H:i:s", filemtime($path . $entry));
+//
+//                $size = filesize($path . $entry);
+//                $size = formatBytes($size);
+//                echo "<tr>
+//                        <td>$counter</td>
+//                        <td><a href='../script/download.php?file=$entry'>$entry</a></td>
+//                        <td>$date</td>
+//                        <td>$userName</td>
+//                        <td>$size</td>
+//                        <td><a class='fa fa-close fa-lg red' href='../script/deleteFile.php?file=$entry'></a></td>
+//                     </tr>";
+//                $counter++;
+//            }
+//
+//        }
+//        closedir($folder);
+//    }
 }
 
 ?>
