@@ -284,4 +284,26 @@ class dbFunction
         $deleteFileStatement = $this->dbCon->prepare("DELETE FROM tab_file_has_tab_user WHERE tab_file_fileId = $fileId");
         $deleteFileResult = $deleteFileStatement->execute();
     }
+
+    public function shareFile($shareUser, $fileName)
+    {
+
+        if (!$this->checkUserName($shareUser)) {
+            $folderId = $_SESSION['folderId'];
+            $fileId = $this->getFileId($fileName, $folderId);
+            $userId = $this->getUserIdByUsername($shareUser);
+            $insertShareFileStatement = $this->dbCon->prepare("INSERT INTO tab_file_has_tab_user  (tab_file_fileId, tab_user_userId) VALUES ($fileId,$userId)");
+            $insertShareFileResult = $insertShareFileStatement->execute();
+        } else {
+            //User nicht vorhanden
+        }
+    }
+
+    public function getUserIdByUsername($userName) {
+        $getUserIdByUsernameStatement = $this->dbCon->prepare("SELECT userId FROM tab_user WHERE userName = :userName");
+        $getUserIdByUsernameStatement->bindParam(":userName",$userName);
+        $getUserIdByUsernameResult = $getUserIdByUsernameStatement->execute();
+        $getUserIdByUsernameFetch =$getUserIdByUsernameStatement->fetch($getUserIdByUsernameResult);
+        return $getUserIdByUsernameFetch['userId'];
+    }
 }
