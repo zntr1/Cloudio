@@ -45,7 +45,7 @@ class dbFunction
     public function userRegister($userName, $firstName, $lastName, $email, $password, $address, $birthday, $gender, $postalCode)
     {
         $registerStatement = $this->dbCon->prepare("INSERT INTO tab_user(userName,firstName,lastname,password, email, address, birthday, genderId, postalcode) VALUES (:userName,:firstName,:lastName,:password,:email,:address,:birthday,:genderId,:postalCode)");
-        if ($this->checkMail($email) && $this->checkUserName($userName)) {
+        if ($this->checkMail($email) && !$this->checkUserName($userName)) {
             $genderFetch = $this->getGenderId($gender);
             $genderId = $genderFetch["genderId"];
             $formattedBirthday = strtotime($birthday);
@@ -145,7 +145,7 @@ class dbFunction
         $checkUserNameStatement->bindParam(':userName', $userName);
         $checkUserNameResult = $checkUserNameStatement->execute();
         $checkUserNameFetch = $checkUserNameStatement->fetch($checkUserNameResult);
-        if (!$checkUserNameFetch) {
+        if ($checkUserNameFetch) {
             return true;
         } else {
             return false;
@@ -249,6 +249,33 @@ class dbFunction
         }
     }
 
+    public function getAllOwnedFiles()
+    {
+        $folderId = $_SESSION['folderId'];
+        $getFileStatement = $this->dbCon->prepare("SELECT filename,fileId FROM tab_file WHERE parentfolderId = $folderId");
+        $getFileStatement->execute();
+        $files = $getFileStatement->fetchAll();
+        return $files;
+    }
+
+    public function getAllSharedFiles()
+    {
+        $sharedFiles = array();
+        $ownedFiles = $this->getAllOwnedFiles();
+        $userId = $_SESSION['userId'];
+        foreach ($ownedFiles as $file) {
+            $fileId = $file['fileId'];
+            $getAllSharedFilesStatement = $this->dbCon->prepare("SELECT * FROM tab_file_has_tab_user WHERE tab_file_fileId = $fileId AND tab_user_userId != $userId");
+            $getAllSharedFilesStatement->execute();
+            $getAllFilesFetch = $getAllSharedFilesStatement->fetchAll();
+            if ($getAllFilesFetch) {
+                array_push($sharedFiles, $getAllFilesFetch);
+            }
+        }
+        return $sharedFiles;
+
+    }
+
     public function getAllowedFiles()
     {
         $allFolderNames = array();
@@ -283,6 +310,17 @@ class dbFunction
         return $getFileIdFetch['fileId'];
     }
 
+    public function getFileByFileId($fileId)
+    {
+        $folderId = $_SESSION['folderId'];
+        $getFileByFileIdStatement = $this->dbCon->prepare("SELECT filename from tab_file WHERE fileId = :fileId AND parentfolderId = :folderId");
+        $getFileByFileIdStatement->bindParam(':fileId', $fileId);
+        $getFileByFileIdStatement->bindParam(':folderId', $folderId);
+        $getFileByFileIdResult = $getFileByFileIdStatement->execute();
+        $getFileByFileIdFetch = $getFileByFileIdStatement->fetch($getFileByFileIdResult);
+        return $getFileByFileIdFetch['filename'];
+    }
+
     public function deleteFile($file)
     {
         $folderId = $_SESSION['folderId'];
@@ -298,10 +336,18 @@ class dbFunction
         $deleteFileResult = $deleteFileStatement->execute();
     }
 
+    public function deleteSharePropertyFromZTab($fileId,$userName) {
+        $userId = $this->getUserIdByUsername($userName);
+        $deleteFileStatement = $this->dbCon->prepare("DELETE FROM tab_file_has_tab_user WHERE tab_file_fileId = :fileId AND tab_user_userId = :userId");
+        $deleteFileStatement->bindParam(":fileId",$fileId);
+        $deleteFileStatement->bindParam(":userId",$userId);
+        $deleteFileResult = $deleteFileStatement->execute();
+    }
+
     public function shareFile($shareUser, $fileName)
     {
 
-        if (!$this->checkUserName($shareUser)) {
+        if ($this->checkUserName($shareUser)) {
             $folderId = $_SESSION['folderId'];
             $fileId = $this->getFileId($fileName, $folderId);
             $userId = $this->getUserIdByUsername($shareUser);
@@ -319,5 +365,14 @@ class dbFunction
         $getUserIdByUsernameResult = $getUserIdByUsernameStatement->execute();
         $getUserIdByUsernameFetch = $getUserIdByUsernameStatement->fetch($getUserIdByUsernameResult);
         return $getUserIdByUsernameFetch['userId'];
+    }
+
+    public function getUsernameByUserId($userId)
+    {
+        $getUsernameByUserIdStatement = $this->dbCon->prepare("SELECT userName FROM tab_user WHERE userId = :userId");
+        $getUsernameByUserIdStatement->bindParam(":userId", $userId);
+        $getUsernameByUserIdResult = $getUsernameByUserIdStatement->execute();
+        $getUsernameByUserIdFetch = $getUsernameByUserIdStatement->fetch($getUsernameByUserIdResult);
+        return $getUsernameByUserIdFetch['userName'];
     }
 }

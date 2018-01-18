@@ -59,6 +59,10 @@
                 class="fa fa-cloud-upload fa-fw fa-lg"></i> &nbsp;Dateien hochladen</a>
 
         <br>
+        <a id="sharedFiles" class="w3-bar-item w3-button w3-padding "><i
+                class="fa fa-cloud-upload fa-fw fa-lg"></i> &nbsp;Freigegebene Dateien anzeigen</a>
+
+        <br>
         <a id="menuSettings" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw fa-lg"></i> &nbsp;Einstellungen</a><br>
         <br>
         <a id="menuLogout" href="../script/logout.php" class="w3-bar-item w3-button w3-padding"><i
@@ -132,6 +136,12 @@
     $(document).ready(function () {
         $("#menuUpload").on("click", function () {
             $("#frame").attr("src", "uploadPage.php");
+        });
+    });
+    // Freigaben anzeigen ruft shareFiles-page
+    $(document).ready(function () {
+        $("#sharedFiles").on("click", function () {
+            $("#frame").attr("src", "sharedFiles.php");
         });
     });
 
