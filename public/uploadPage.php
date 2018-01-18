@@ -16,11 +16,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2> Dateien zum hochladen unten ins Feld ziehen!</h2>
-                <form action="../script/upload2.php" enctype="multipart/form-data" class="dropzone" id="image-upload">
-                    <div>
-                        <h3>Upload Multiple Image By Click On Box</h3>
-                    </div>
+                <h2> Dateien zum hochladen ins Feld ziehen!</h2>
+                <form action="../script/upload2.php" enctype="multipart/form-data" class="dropzone black" id="imageUpload">
+                    <div class="dz-message" data-dz-message><span style="opacity: 0.5;">Zieh was in mich rein!</span></div>
+
                 </form>
             </div>
         </div>
@@ -28,9 +27,9 @@
 </div>
 
 <script type="text/javascript">
-    Dropzone.options.imageUpload = {
-        maxFilesize: 1,
-        acceptedFiles: ".jpeg,.jpg,.png,.gif, .txt"
+
+        Dropzone.options.imageUpload = {
+        maxFilesize: 1000, //mb
     };
 </script>
 <script>

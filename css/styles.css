@@ -112,6 +112,10 @@ hr {
     text-decoration: none;
 }
 
+.black{
+    color:black;
+    font-size: 30px;
+}
 
 #userLogout:hover{
     background-color: #e89100;

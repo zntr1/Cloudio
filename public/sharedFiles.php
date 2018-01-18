@@ -34,7 +34,7 @@ foreach ($sharedFiles as $file) {
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Dateien</h3>
+                        <h3 class="panel-title">Freigabe</h3>
                         <div class="pull-right">
 							<span class="clickable filter" data-toggle="tooltip" title="" data-container="body"
                                   data-original-title="Toggle table filter">
