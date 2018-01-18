@@ -37,11 +37,11 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 
 
-    <
+
     <!--    <script src="../jquery.form-validator.min.js"></script>-->
 
 
@@ -101,8 +101,9 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                                    required>
                         </div>
 
-                        <div class="captcha">
-                            <input data-validation="recaptcha" data-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs" data-validation-recaptcha-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs">
+                        <div class="g-recaptcha captcha" data-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs">
+<!--                            <input styledata-validation="recaptcha" data-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs" data-validation-recaptcha-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs">-->
+
                         </div>
 
 
