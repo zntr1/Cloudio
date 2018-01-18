@@ -269,3 +269,7 @@ input[type='submit'] {
     width: 100%;
     bottom: 0;
 }
+
+form .error {
+    color: #ff0000;
+}
