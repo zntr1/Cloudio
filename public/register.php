@@ -141,7 +141,7 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
             <input type="submit" value="Registrieren">
         </div>
 
-        <p class="text--center">Schon registriert? &nbsp;&nbsp;<a style="color: orange;" href="../public/login.html">Logge
+        <p class="text--center">Schon registriert? &nbsp;&nbsp;<a style="color: orange;" href="../public/login.php">Logge
                 dich ein! &nbsp;<i class="fa fa-sign-in fa-lg"></i> </a>
 
         </p>

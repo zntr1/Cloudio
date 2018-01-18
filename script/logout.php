@@ -10,5 +10,5 @@ setcookie("username", "", time() - 100, "/");
 
 session_start();
 session_destroy();
-$login_url = '../public/login.html';
+$login_url = '../public/login.php';
 header('Location: ' . $login_url);

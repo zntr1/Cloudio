@@ -17,7 +17,7 @@
 
 <script>
     if ($.cookie("username") == null || $.cookie("sessionId") == null) {
-        location.href = "../public/login.html";
+        location.href = "../public/login.php";
     }
 </script>
 
@@ -145,7 +145,7 @@
     // Logoutbutton loggt user aus
     $(document).ready(function () {
         $("#menuLogout").on("click", function () {
-            location.href = "../public/login.html";
+            location.href = "../script/logout.php";
         });
     });
 

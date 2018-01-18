@@ -174,8 +174,8 @@ class dbFunction
             if ($this->checkGenderName($gender)) {
                 $addGenderStatement->bindParam(':gender', $gender);
                 $addGenderResult = $addGenderStatement->execute();
-                header("Refresh:0; url=../public/register.php");
             }
+            header("Refresh:0; url=../public/register.php");
         }
     }
 
@@ -312,11 +312,12 @@ class dbFunction
         }
     }
 
-    public function getUserIdByUsername($userName) {
+    public function getUserIdByUsername($userName)
+    {
         $getUserIdByUsernameStatement = $this->dbCon->prepare("SELECT userId FROM tab_user WHERE userName = :userName");
-        $getUserIdByUsernameStatement->bindParam(":userName",$userName);
+        $getUserIdByUsernameStatement->bindParam(":userName", $userName);
         $getUserIdByUsernameResult = $getUserIdByUsernameStatement->execute();
-        $getUserIdByUsernameFetch =$getUserIdByUsernameStatement->fetch($getUserIdByUsernameResult);
+        $getUserIdByUsernameFetch = $getUserIdByUsernameStatement->fetch($getUserIdByUsernameResult);
         return $getUserIdByUsernameFetch['userId'];
     }
 }
