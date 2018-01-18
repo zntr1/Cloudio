@@ -48,13 +48,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 <div class="input-group">
                     <span class="input-group-addon"><span class="fa fa-user fa-lg"></span></span>
                     <input id="login__username" type="text" name="username" class="form-control"
-                           placeholder="Benutzername">
+                           placeholder="Benutzername" required>
                 </div>
 
                 <div class="input-group">
                     <span class="input-group-addon"><span class=" fa fa-lock fa-lg"></span></span>
                     <input id="login__password" type="password" name="password" class="form-control"
-                           placeholder="Passwort">
+                           placeholder="Passwort" required>
                 </div>
                 <span class="text--center long" style="color:red;"><?php echo $userNamePasswordError; ?></span>
 
@@ -73,9 +73,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
-<script src="js/validate-login.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 
 
 </body>
