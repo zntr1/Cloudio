@@ -36,6 +36,7 @@ class dbFunction
             $date_of_expiry = time() + 3600 * 48;
             setcookie("username", "$username", $date_of_expiry, "/");
             setcookie("sessionId", "$sessionId", $date_of_expiry, "/");
+            header("location: ../public/index.html");
             return true;
         } else {
             return false;
