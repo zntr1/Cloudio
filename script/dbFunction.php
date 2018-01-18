@@ -126,6 +126,19 @@ class dbFunction
         }
     }
 
+    public function checkPostalCode($postalCode)
+    {
+        $checkPostalCodeStatement = $this->dbCon->prepare("SELECT * FROM tab_city where postalcode = :postalcode");
+        $checkPostalCodeStatement->bindParam(':postalcode', $postalCode);
+        $checkPostalCodeResult = $checkPostalCodeStatement->execute();
+        $checkPostalCodeFetch = $checkPostalCodeStatement->fetch($checkPostalCodeResult);
+        if (!$checkPostalCodeFetch) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function checkUserName($userName)
     {
         $checkUserNameStatement = $this->dbCon->prepare("SELECT * FROM tab_user where userName = :userName");
