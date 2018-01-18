@@ -56,9 +56,9 @@ input {
     transition: background-color 0.3s;
 }
 
-input::placeholder {
-    color: #9c9a9b;
-}
+/*input::placeholder {*/
+    /*color: #9c9a9b;*/
+/*}*/
 
 ::-webkit-calendar-picker-indicator { background: inherit; }
 
