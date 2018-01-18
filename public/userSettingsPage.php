@@ -11,6 +11,9 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
     <link rel="stylesheet" href="../css/contentStyles.css">
     <link rel="stylesheet" href="../css/styles.css">
 
+    <script src="../jquery-1.7.1.js"></script>
+    <script src="../jquery.form-validator.min.js"></script>
+
 </head>
 <body>
 
@@ -22,7 +25,7 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
                     <!--// Vorname-->
                     <div class="form-group">
                         <label for="settings_firstName">Vorname</label>
-                        <input id="settings_firstName" type="text" name="firstName" class="form-control"
+                        <input id="settings_firstName" type="text" name="firstName" class="form-control" data-validation="length" data-validation-length="min10"
                                placeholder="Vorname eintragen.."
                                value="<?php echo $userData['firstName']; ?>"
                                required>
@@ -105,6 +108,10 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
         </div>
     </div>
 </div>
-
+<script>
+    $.validate({
+        lang: 'de'
+    });
+</script>
 </body>
 </html>
