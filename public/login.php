@@ -1,3 +1,24 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: skohlrus
+ * Date: 08.01.2018
+ * Time: 11:18
+ */
+
+require_once '../script/dbConfig.php';
+
+    $userNamePasswordError = "";
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    if ($dbFunction->userLogin($_POST['username'], $_POST['password'])) {
+        header("location: ../public/index.html");
+    } else {
+        $userNamePasswordError = "Benutzername oder Passwort nicht korrekt";
+    }
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +37,8 @@
 <body class="align">
 
 <H5 style="font-size: 40px; margin: 0;"> CLOUDIO LOGO </H5>
-<form action="../script/login.php" method="POST" class="form login" id="loginForm">
+<span><?php echo $userNamePasswordError;?></span>
+<form action="login.php" method="POST" class="form login" id="loginForm">
 
     <div class="form__field">
         <label for="login__username">
@@ -39,7 +61,7 @@
         </div>
         <p class="text--center">Noch keinen Account? &nbsp;&nbsp;<a style="color: orange;"
                                                                     href="../public/register.php">Registriere dich
-            kostenlos! &nbsp;<i class="fa fa-sign-in fa-lg"></i> </a>
+                kostenlos! &nbsp;<i class="fa fa-sign-in fa-lg"></i> </a>
 
         </p>
     </div>
