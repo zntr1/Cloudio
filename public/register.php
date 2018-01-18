@@ -100,7 +100,7 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                         </div>
 
                         <div class="captcha">
-                            <input class="g-recaptcha" data-validation="recaptcha" data-validation-recaptcha-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs">
+                            <input class="g-recaptcha" data-validation="recaptcha" data-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs" data-validation-recaptcha-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs">
                         </div>
 
 
@@ -125,7 +125,7 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-road fa-lg"></span></span>
                             <input id="registration_address" type="text" name="address" class="form-control"
-                                   placeholder="Straße" data-validation="alphanumeric" data-validation-allowing="-_." data-validation-length="2-50"
+                                   placeholder="Straße" data-validation="alphanumeric" data-validation-allowing="-_. " data-validation-length="2-50"
                                    required>
                         </div>
                         <div class="input-group">
@@ -153,7 +153,7 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                         </div>
 
                         <p class="text--center">Schon registriert? &nbsp;&nbsp;<a style="color: orange;"
-                                                                                  href="../public/login.html">Logge
+                                                                                  href="../public/login.php">Logge
                                 dich ein! &nbsp;<i class="fa fa-sign-in fa-lg"></i> </a>
 
                         </p>
