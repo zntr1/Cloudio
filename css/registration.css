@@ -44,6 +44,11 @@ a:hover {
     text-decoration: underline;
 }
 
+#login__password,
+#login__username{
+    width: 100%;
+}
+
 input {
     background-image: none;
     border: 0;
@@ -70,11 +75,8 @@ select,
 input[type='submit'] {
     color: white;
     border-radius: 0.25rem;
-    /*padding: 16px;*/
-    /*padding: 1rem;*/
+
     background-color: #3b4148 ;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
 }
 input[type='submit']{
     background-color: orange;

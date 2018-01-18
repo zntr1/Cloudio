@@ -1,11 +1,8 @@
-/* config.css */
-
-body {
-    background-color: #1b2227 !important;
-    color: white;
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+    height: 100%;
 }
-
-/* helpers/align.css */
 
 .align {
     -webkit-box-align: center;
@@ -14,7 +11,7 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    top:-15vh;
+    /*top:-15vh;*/
     position: relative;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -25,69 +22,21 @@ body {
     justify-content: center;
 }
 
-/* helpers/grid.css */
-
-
-/* helpers/hidden.css */
-
-.hidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-}
-
-/* helpers/icon.css */
-
-.icons {
-    display: none;
-}
-
-.icon {
-    display: inline-block;
-    fill: #606468;
-    font-size: 16px;
-    font-size: 1rem;
-    height: 1em;
-    vertical-align: middle;
-    width: 1em;
-}
-
-/* layout/base.css */
-
-* {
-    box-sizing: inherit;
-}
-
-html {
-    box-sizing: border-box;
-    font-size: 100%;
-    height: 100%;
+.captcha{
+    margin-left: 3vw;
+    margin-bottom: 1vh;
 }
 
 body {
-    background-color: #2c3338;
-    color: white !important;
+    color: white;
+    background-color: #1b2227 ;
     font-family: 'Open Sans', sans-serif;
-    font-size: 17px !important;
     font-size: 0.875rem;
-    font-weight: 400;
+    font-weight: 500;
     height: 100%;
     line-height: 1.5;
     margin: 0;
     min-height: 100vh;
-}
-
-/* modules/anchor.css */
-
-a {
-    color: #eee;
-    outline: 0;
-    text-decoration: none;
 }
 
 a:focus,
@@ -95,13 +44,20 @@ a:hover {
     text-decoration: underline;
 }
 
-/* modules/form.css */
+#login__password,
+#login__username{
+    width: 100%;
+}
+
+.long{
+    width: 100% !important;
+    display: block;
+}
 
 input {
     background-image: none;
-
     border: 0;
-    color: white !important;
+    color: white;
     font: inherit;
     margin: 0;
     outline: 0;
@@ -110,62 +66,32 @@ input {
     transition: background-color 0.3s;
 }
 
-input::placeholder {
-    color: #9c9a9b;
-}
+/*input::placeholder {*/
+/*color: #9c9a9b;*/
+/*}*/
 
+::-webkit-calendar-picker-indicator { background: inherit; }
 
-
-.form {
-    margin: -14px;
-    margin: -0.875rem;
-
-}
-
-.form input[type='password'],
-.form input[type='text'],
-.form input[type='email'],
-.form input[type='date'],
-.form select{
-    width: 100%;
-}
-
-.form__field {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    margin: 14px;
-    margin: 0.875rem;
-}
-
-.form__input {
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-}
-
-/* modules/login.css */
-
-.login {
-    color: #eee;
-}
-.form input[type='date']:hover{
-
-}
-
-.login label,
-.login input[type='text'],
-.login input[type='password'],
-.login input[type='email'],
-.form input[type='date'],
-.login select,
-.login input[type='submit'] {
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='date'],
+select,
+input[type='submit'] {
+    color: white;
     border-radius: 0.25rem;
-    padding: 16px;
-    padding: 1rem;
+
+    background-color: #3b4148 ;
+}
+input[type='submit']{
+    background-color: orange;
+}
+input[type='submit']:focus,
+input[type='submit']:hover {
+    background-color: #9d6300;
 }
 
-.login label {
+label {
     background-color: #363b41;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
@@ -175,70 +101,37 @@ input::placeholder {
     padding-right: 1.25rem;
 }
 
-.login input[type='password'],
-.login input[type='email'],
-.login select,
-.form input[type='date'],
-.login input[type='text'] {
-    background-color: #3b4148 ;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-}
-
-/*datepicker dings*/
-::-webkit-calendar-picker-indicator { background: inherit; }
-
-
-
-.login select{
-    border: 0;
-    color: white;
-    font-size: 17px;
-}
-
-.login input[type='password']:focus,
-.login input[type='password']:hover,
-.login select:focus,
-.login select:hover,
-.login input[type='date'],
-.login input[type='email']:focus,
-.login input[type='email']:hover,
-.login input[type='text']:focus,
-.login input[type='text']:hover {
-    background-color: #434a52;
+#content,
+.container,
+.row{
+    /*display: inline;*/
+    max-width: 30vw;
+    max-heigth: 50vh;
+    width: 30vw;
+    height: 50vh;
+    position: relative;
 }
 
 
-.login input[type='submit']:focus,
-.login input[type='submit']:hover {
-    background-color: #9d6300;
-}
-
-/* modules/text.css */
-
-p {
-    margin-bottom: 0.5em;
-    margin-top:  0.5em;
-}
-
-.text--center {
-    text-align: center;
-}
-
-
-form label {
-    width: 60px;
+.unten{
+    /*position: absolute;*/
+    margin-top: 1em;
+    background-color: inherit;
+    color: #fff !important;
+    width: 100%;
+    bottom: 0;
 }
 
 form {
 
-    display: inline;
-    max-width: 30vw;
-    max-heigth: 30vh;
-    width: 30vw;
-    height: 28vh;
-    position: relative;
+    /*display: inline;*/
+    /*max-width: 50vw;*/
+    /*max-heigth: 50vh;*/
+    /*width: 50vw;*/
+    /*height: 50vh;*/
+    /*position: relative;*/
 }
+
 
 .links{
     max-width: 25vw;
@@ -252,24 +145,44 @@ form {
     float: right;
 }
 
+.input-group-addon span{
+    width: 1em;
+}
+
+.input-group{
+    width: 100%;
+    margin: 0 0 1vh 0 !important;
+    height: 3em !important;
+}
+
+.form-control{
+    height: 3em !important;
+    width: 100% ;
+}
+
+h5{
+    margin-bottom: 0.5em !important;
+}
+
+
 input[type='submit'] {
     cursor: pointer;
     background-color: #e89100;
     color: #eee;
-    width:  100%;
+    /*width:  100%;*/
+    /* Width: 23vw einer FormControl + 2vw marginRechts + 23vw einer FormControl*/
+    heigth: 3em !important;
+    width:100%;
+    height: 3em;
     font-weight: 700;
     text-transform: uppercase;
 }
 
-
-.unten{
-    position: absolute;
-    background-color: inherit;
-    color: #fff !important;
-    width: 100%;
-    bottom: 0;
+.text--center {
+    text-align: center;
 }
 
-form .error {
-    color: #ff0000;
+form p{
+    margin-bottom: 0.5em;
+    margin-top:  0.5em;
 }
