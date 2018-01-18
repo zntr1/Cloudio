@@ -38,11 +38,13 @@ require_once '../script/readFileSystem.php';
                             <th>Ersteller</th>
                             <th>Größe</th>
                             <th>Löschen</th>
+                            <th>Freigaben</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
-                        readFileSystem();
+                        readFileSystem($fileArray);
                         ?>
                         </tbody>
                     </table>

@@ -16,20 +16,20 @@
 <body class="align">
 
 <H5 style="font-size: 40px; margin: 0;"> CLOUDIO LOGO </H5>
-<form action="../script/login.php" method="POST" class="form login">
+<form action="../script/login.php" method="POST" class="form login" id="loginForm">
 
     <div class="form__field">
-            <label for="login__username">
-                <i class="fa fa-user fa-lg"></i>
-            </label>
-        <input id="login__username" type="text" name="username" class="form__input" placeholder="Benutzername" required>
+        <label for="login__username">
+            <i class="fa fa-user fa-lg"></i>
+        </label>
+        <input id="login__username" type="text" name="username" class="form__input" placeholder="Benutzername">
     </div>
 
     <div class="form__field">
-            <label for="login__password">
-                <i class="fa fa-lock fa-lg"></i>
-            </label>
-        <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
+        <label for="login__password">
+            <i class="fa fa-lock fa-lg"></i>
+        </label>
+        <input id="login__password" type="password" name="password" class="form__input" placeholder="Passwort">
     </div>
 
 
@@ -37,12 +37,17 @@
         <div class="form__field">
             <input type="submit" value="Einloggen!">
         </div>
-        <p class="text--center">Noch keinen Account? &nbsp;&nbsp;<a style="color: orange;" href="../public/register.php">Registriere dich kostenlos! &nbsp;<i class="fa fa-sign-in fa-lg"></i> </a>
+        <p class="text--center">Noch keinen Account? &nbsp;&nbsp;<a style="color: orange;"
+                                                                    href="../public/register.php">Registriere dich
+            kostenlos! &nbsp;<i class="fa fa-sign-in fa-lg"></i> </a>
 
         </p>
     </div>
 </form>
 
+<script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+<script src="js/validate-login.js"></script>
 
 
 </body>

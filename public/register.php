@@ -5,7 +5,7 @@ require_once '../script/dbConfig.php';
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Registrierung</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/contentStyles.css">
@@ -56,7 +56,7 @@ require_once '../script/dbConfig.php';
 
 
         <div class="form__field">
-            <label for="registration_password2">
+            <label for="registration_password2">k
             </label>
             <input id="registration_password2" type="password" name="submitPassword" class="form__input"
                    placeholder="Passwort wiederholen"
@@ -93,7 +93,8 @@ require_once '../script/dbConfig.php';
             <label for="registration_birthday">
                 <i class="fa fa-birthday-cake fa-lg"></i>
             </label>
-            <input id="registration_birthday" value="1939-05-30" type="date" name="birthday" class="form__input" placeholder="Geburtsdatum"
+            <input id="registration_birthday" value="1939-05-30" type="date" name="birthday" class="form__input"
+                   placeholder="Geburtsdatum"
                    required>
         </div>
 
@@ -102,25 +103,24 @@ require_once '../script/dbConfig.php';
                 <i class="fa fa-android fa-lg"></i>
             </label>
             <select class="selectpicker" name="gender" value="Joghurt" title="Geschlecht">
-                <option selected >Dobby</option>
+                <option selected>Dobby</option>
                 <?php
                 echo $dbFunction->getGenderData($actualGender);
                 ?>
             </select>
         </div>
     </div>
-<div class="unten">
-    <div class="form__field">
-        <input type="submit" value="Registrieren">
+    <div class="unten">
+        <div class="form__field">
+            <input type="submit" value="Registrieren">
+        </div>
+
+        <p class="text--center">Schon registriert? &nbsp;&nbsp;<a style="color: orange;" href="../public/login.html">Logge
+                dich ein! &nbsp;<i class="fa fa-sign-in fa-lg"></i> </a>
+
+        </p>
     </div>
-
-    <p class="text--center">Schon registriert? &nbsp;&nbsp;<a style="color: orange;" href="../public/login.html">Logge dich ein! &nbsp;<i class="fa fa-sign-in fa-lg"></i> </a>
-
-    </p>
-</div>
 </form>
-
-
 
 
 </body>

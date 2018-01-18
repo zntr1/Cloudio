@@ -5,7 +5,6 @@
  * Date: 11.01.2018
  * Time: 15:46
  */
-setcookie("test", "test", 3600);
 session_start();
 
 //Hier sind alle Datenbankfunktionen hinterlegt
@@ -86,7 +85,15 @@ class dbFunction
         return $getFolderIdStatement->fetch($getFolderIdResult)['folderId'];
     }
 
-    public function crateFolder($userName)
+    public function getFolderById($id)
+    {
+        $getFolderByIdStatement = $this->dbCon->prepare("SELECT foldername FROM tab_folder WHERE folderId = :folderId");
+        $getFolderByIdStatement->bindParam(':folderId', $id);
+        $getFolderByIdResult = $getFolderByIdStatement->execute();
+        return $getFolderByIdStatement->fetch($getFolderByIdResult)['foldername'];
+    }
+
+    public function createFolder($userName)
     {
         $createFolderStatement = $this->dbCon->prepare("INSERT INTO tab_folder(foldername) VALUES (:foldername)");
         $createFolderStatement->bindParam(':foldername', $userName);
@@ -148,11 +155,14 @@ class dbFunction
 
     public function addGender($gender)
     {
-        $addGenderStatement = $this->dbCon->prepare("INSERT INTO tab_gender(gender) VALUES (:gender)");
         if ($this->checkGenderName($gender)) {
-            $addGenderStatement->bindParam(':gender', $gender);
-            $addGenderResult = $addGenderStatement->execute();
-            header("Refresh:0; url=../public/register.php");
+
+            $addGenderStatement = $this->dbCon->prepare("INSERT INTO tab_gender(gender) VALUES (:gender)");
+            if ($this->checkGenderName($gender)) {
+                $addGenderStatement->bindParam(':gender', $gender);
+                $addGenderResult = $addGenderStatement->execute();
+                header("Refresh:0; url=../public/register.php");
+            }
         }
     }
 
@@ -224,5 +234,76 @@ class dbFunction
             $updatePasswordResult = $updatePasswordStatement->execute();
             header("location: ../public/index.html");
         }
+    }
+
+    public function getAllowedFiles()
+    {
+        $allFolderNames = array();
+        $parentFolderOfFiles = array();
+        $getFileStatement = $this->dbCon->prepare("SELECT filename,parentfolderId FROM tab_file WHERE fileId = :fileId");
+        $userId = $_SESSION['userId'];
+        $getAllowedFileNamesStatement = $this->dbCon->prepare("SELECT * FROM tab_file_has_tab_user WHERE tab_user_userId = $userId");
+        $getAllowedFileNamesResult = $getAllowedFileNamesStatement->execute();
+        $fileIds = $getAllowedFileNamesStatement->fetchAll();
+        foreach ($fileIds as $value) {
+            $fileId = $value['tab_file_fileId'];
+            $getFileStatement->bindParam(':fileId', $fileId);
+            $getFileResult = $getFileStatement->execute();
+            $getFileFetch = $getFileStatement->fetch($getFileResult);
+            $folderName = $this->getFolderById($getFileFetch['parentfolderId']);
+            if (!in_array($folderName, $allFolderNames)) {
+                array_push($allFolderNames, $folderName);
+                $parentFolderOfFiles[$folderName] = array();
+            }
+            array_push($parentFolderOfFiles[$folderName], $getFileFetch['filename']);
+        }
+        return [$allFolderNames, $parentFolderOfFiles];
+    }
+
+    public function getFileId($file, $folderId)
+    {
+        $getFileIdStatement = $this->dbCon->prepare("SELECT fileId from tab_file WHERE filename = :file AND parentfolderId = :folderId");
+        $getFileIdStatement->bindParam(':file', $file);
+        $getFileIdStatement->bindParam(':folderId', $folderId);
+        $getFileIdResult = $getFileIdStatement->execute();
+        $getFileIdFetch = $getFileIdStatement->fetch($getFileIdResult);
+        return $getFileIdFetch['fileId'];
+    }
+
+    public function deleteFile($file)
+    {
+        $folderId = $_SESSION['folderId'];
+        $fileId = $this->getFileId($file, $folderId);
+        $deleteFileStatement = $this->dbCon->prepare("DELETE FROM tab_file WHERE fileId = $fileId");
+        $this->deleteFileFromZTab($fileId);
+        $deleteFileResult = $deleteFileStatement->execute();
+    }
+
+    public function deleteFileFromZTab($fileId)
+    {
+        $deleteFileStatement = $this->dbCon->prepare("DELETE FROM tab_file_has_tab_user WHERE tab_file_fileId = $fileId");
+        $deleteFileResult = $deleteFileStatement->execute();
+    }
+
+    public function shareFile($shareUser, $fileName)
+    {
+
+        if (!$this->checkUserName($shareUser)) {
+            $folderId = $_SESSION['folderId'];
+            $fileId = $this->getFileId($fileName, $folderId);
+            $userId = $this->getUserIdByUsername($shareUser);
+            $insertShareFileStatement = $this->dbCon->prepare("INSERT INTO tab_file_has_tab_user  (tab_file_fileId, tab_user_userId) VALUES ($fileId,$userId)");
+            $insertShareFileResult = $insertShareFileStatement->execute();
+        } else {
+            //User nicht vorhanden
+        }
+    }
+
+    public function getUserIdByUsername($userName) {
+        $getUserIdByUsernameStatement = $this->dbCon->prepare("SELECT userId FROM tab_user WHERE userName = :userName");
+        $getUserIdByUsernameStatement->bindParam(":userName",$userName);
+        $getUserIdByUsernameResult = $getUserIdByUsernameStatement->execute();
+        $getUserIdByUsernameFetch =$getUserIdByUsernameStatement->fetch($getUserIdByUsernameResult);
+        return $getUserIdByUsernameFetch['userId'];
     }
 }

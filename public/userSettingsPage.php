@@ -50,7 +50,7 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
                         <label for="settings_new_password">Neues Passwort</label>
                         <input id="settings_new_password" type="password" name="newPassword" class="form-control"
                                placeholder="Passwort ändern.."
-                               value="" required>
+                               value="">
                     </div>
 
                     <!--      // Passwort 2-->
@@ -58,7 +58,7 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
                         <label for="settings_password2">Passwort wiederholen</label>
                         <input id="settings_password2" type="password" name="submitNewPassword" class="form-control"
                                placeholder="Passwort wiederholen.."
-                               value="" required>
+                               value="">
                     </div>
 
                     <!--     Email-->
@@ -85,7 +85,7 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
                                value="<?php echo $userData['postalcode']; ?>" required>
                     </div>
 
-                <!-- !!!!!!!!!!!!!!!!!! Gender habe ich rausgelassen, mach aktuellen gender als Option im Picker-->
+                    <!-- !!!!!!!!!!!!!!!!!! Gender habe ich rausgelassen, mach aktuellen gender als Option im Picker-->
 
                     <!--    // Genderpick-->
                     <div class="form-group">
