@@ -46,7 +46,7 @@ function readFileSystem($fileArray)
                         <td>$folder</td>
                         <td>$size</td>";
                     if ($userName === $folder) {
-                        echo "<form action=\"../script/shareFile.php\" method=\"post\">";
+                        echo "<form action=\"../public/downloadPage.php\" method=\"post\">";
                         echo "<td><a class='fa fa-close fa-lg red' href='../script/deleteFile.php?file=$entry'></a></td>";
                         echo "<td><input type=\"text\" placeholder='Freigeben für..' name='shareUser' class=\"form-control\" /></td>";
                         echo "<td><input type=\"submit\" value='Freigeben'></td>";

@@ -17,7 +17,7 @@
 
 <script>
     if ($.cookie("username") == null || $.cookie("sessionId") == null) {
-        location.href = "../public/login.html";
+        location.href = "../public/login.php";
     }
 </script>
 
@@ -57,6 +57,10 @@
 
         <a id="menuUpload" class="w3-bar-item w3-button w3-padding "><i
                 class="fa fa-cloud-upload fa-fw fa-lg"></i> &nbsp;Dateien hochladen</a>
+
+        <br>
+        <a id="sharedFiles" class="w3-bar-item w3-button w3-padding "><i
+                class="fa fa-cloud-upload fa-fw fa-lg"></i> &nbsp;Freigegebene Dateien anzeigen</a>
 
         <br>
         <a id="menuSettings" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw fa-lg"></i> &nbsp;Einstellungen</a><br>
@@ -134,6 +138,12 @@
             $("#frame").attr("src", "uploadPage.php");
         });
     });
+    // Freigaben anzeigen ruft shareFiles-page
+    $(document).ready(function () {
+        $("#sharedFiles").on("click", function () {
+            $("#frame").attr("src", "sharedFiles.php");
+        });
+    });
 
     // Settingsbutton ruft Settings-page
     $(document).ready(function () {
@@ -145,7 +155,7 @@
     // Logoutbutton loggt user aus
     $(document).ready(function () {
         $("#menuLogout").on("click", function () {
-            location.href = "../public/login.html";
+            location.href = "../script/logout.php";
         });
     });
 

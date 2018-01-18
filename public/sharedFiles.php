@@ -1,17 +1,21 @@
 <?php
-require_once '../script/readFileSystem.php';
+/**
+ * Created by IntelliJ IDEA.
+ * User: skohlrus
+ * Date: 18.01.2018
+ * Time: 10:21
+ */
 require_once '../script/dbConfig.php';
+require_once '../script/displaySharedFiles.php';
 
 
-$userNotFoundError = "";
-$shareFileSuccess = "";
-if(isset($_POST["shareUser"])) {
-    if($dbFunction->checkUserName($_POST["shareUser"])) {
-        $dbFunction->shareFile($_POST["shareUser"],$_POST["fileName"]);
-        $shareFileSuccess = "Die Datei".$_POST["fileName"]."wurde für den Benutzer".$_POST["shareUser"]."freigegeben";
-    } else {
-        $userNotFoundError = "User nicht gefunden";
-    }
+$sharedFiles = $dbFunction->getAllSharedFiles();
+$sharedFilesWithName = array();
+foreach ($sharedFiles as $file) {
+    $userName = $dbFunction->getUsernameByUserId($file[0]['tab_user_userId']);
+    $filename = $dbFunction->getFileByFileId($file[0]['tab_file_fileId']);
+    $tempArray = [$userName,$filename,$file[0]['tab_file_fileId']];
+    array_push($sharedFilesWithName,$tempArray);
 }
 ?>
 <html>
@@ -47,21 +51,16 @@ if(isset($_POST["shareUser"])) {
                         <tr>
                             <th>#</th>
                             <th>Dateiname</th>
-                            <th>Hochgeladen</th>
-                            <th>Ersteller</th>
-                            <th>Größe</th>
-                            <th>Löschen</th>
-                            <th>Freigaben</th>
-                            <th></th>
+                            <th>Freigegeben für</th>
+                            <th>Freigabe entfernen</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
-                        readFileSystem($fileArray);
+                        displaySharedFiles($sharedFilesWithName);
                         ?>
                         </tbody>
                     </table>
-                    <span><?php echo $userNotFoundError;?></span>
                 </div>
             </div>
         </div>
