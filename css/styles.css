@@ -337,6 +337,7 @@ input.invalid {
 .step.active {
     opacity: 0.5;
     background-color: yellow;
+    /*test*/
 }
 
 .tab{
