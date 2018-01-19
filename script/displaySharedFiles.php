@@ -12,10 +12,12 @@ function displaySharedFiles($fileArray)
     foreach ($fileArray as $file) {
 
         echo "
+            <tr>       
             <td>$counter</td>
             <td>$file[1]</td>
             <td>$file[0]</td>
-            <td><a class='fa fa-close fa-lg red' href='../script/unShareFile.php?fileId=$file[2]&username=$file[0]'></a></td>";
+            <td><a class='fa fa-close fa-lg red' href='../script/unShareFile.php?fileId=$file[2]&username=$file[0]'></a></td>
+        </tr>";
         $counter++;
     }
 }
