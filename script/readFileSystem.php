@@ -49,7 +49,7 @@ function readFileSystem($fileArray)
                         echo "<form action=\"../public/downloadPage.php\" method=\"post\">";
                         echo "<td><a class='fa fa-close fa-lg red' href='../script/deleteFile.php?file=$entry'></a></td>";
                         echo "<td><input type=\"text\" placeholder='Freigeben für..' name='shareUser' class=\"form-control\" /></td>";
-                        echo "<td><input type=\"submit\" value='Freigeben'></td>";
+                        echo "<td><input type=\"submit\"  class=\"form-control freigebenBtn\" value='Freigeben'></td>";
                         echo "<input type='hidden' name='fileName' value='$entry'>";
                         echo "</form>";
                     }

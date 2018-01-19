@@ -342,3 +342,16 @@ input.invalid {
 .tab{
     display: none;
 }
+.freigebenBtn{
+    background-color: inherit;
+    color: orange;
+    border-color: white;
+
+}
+
+.freigebenBtn:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    background-color: #0f1116;
+
+}
