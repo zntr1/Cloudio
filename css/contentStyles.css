@@ -1,4 +1,18 @@
 
+body {
+    color: white;
+    background-color: #1b2227;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5;
+    height: 92vh;
+    margin: 0;
+    min-height: 92vh;
+    max-height: 92vh;
+
+}
+
 #content{
     margin: 0 15vw 0 0;
     position: relative !important;
@@ -7,7 +21,13 @@
     margin-top: 8vh;
     height: 92vh;
     width: 90%;
+    max-width: 90%;
+    overflow: hidden;
 
+}
+
+.container{
+    margin-left: 5vw;
 }
 
 /* layout.css Style */

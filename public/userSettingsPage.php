@@ -8,7 +8,6 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
 <head>
     <meta charset="UTF-8">
     <!--    <link rel="stylesheet" href="../css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="../css/contentStyles.css">
     <link rel="stylesheet" href="../css/styles.css">
 
     <script src="http://code.jquery.com/jquery-1.8.3.min.js" type="text/javascript"></script>
@@ -19,6 +18,8 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.js"
             type="text/javascript"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/contentStyles.css">
+
     <script>
 
         $().ready(function () {
@@ -154,11 +155,11 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
     </script>
 </head>
 
-<body class="">
+<body>
 <div id="content">
     <div class="container">
         <div class="row">
-            <div class="">
+            <div class="col-lg-12">
                 <form id="subForm" action="../script/userSetting.php" method="POST" class="form login">
                     <div class="links">
                         <div class="input-group">
