@@ -47,7 +47,6 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
 
 </head>
 
-<body>
 <body class="align">
 <div id="content">
     <div class="container">
@@ -151,9 +150,9 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                     </div>
 
                     <div class="">
-                        <div class="">
-                            <input type="submit" value="Registrieren" class="form-control">
-                        </div>
+                            <div class="">
+                                <input type="submit" value="Registrieren" class="form-control">
+                            </div>
 
                         <p class="text--center">Schon registriert? &nbsp;&nbsp;<a style="color: orange;"
                                                                                   href="../public/login.php">Logge
@@ -187,8 +186,5 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
         }
     });
 </script>
-</body>
-
-
 </body>
 </html>
