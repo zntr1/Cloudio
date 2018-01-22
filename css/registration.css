@@ -193,6 +193,8 @@ form {
     border-color: green;
 }
 
+
+
 .error-label{
     top: -1vh;
     color: red;
@@ -224,6 +226,39 @@ input[type='submit'] {
     /*width:  100%;*/
     /* Width: 23vw einer FormControl + 2vw marginRechts + 23vw einer FormControl*/
     width: 48vw ;
+    heigth: 3em !important;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.genderText{
+    display: inline!important;
+    float: right!important;
+
+}
+
+.genderText input[type='button']{
+    float:right;
+    width:3vw !important;
+
+
+}
+
+.genderText input[type='text']{
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+
+    float:left;
+    width:20vw;
+}
+
+input[type='button'] {
+    cursor: pointer;
+    background-color: #e89100;
+    color: #eee;
+    /*width:  100%;*/
+    /* Width: 23vw einer FormControl + 2vw marginRechts + 23vw einer FormControl*/
+    width: 2vw !important;
     heigth: 3em !important;
     font-weight: 700;
     text-transform: uppercase;

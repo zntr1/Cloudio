@@ -147,6 +147,12 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                                 ?>
                             </select>
                         </div>
+
+                        <div class="input-group genderText">
+                            <input id="btn_addGender" value="+" type="button" name="btn_addGender" class="form-control" placeholder="+" onclick="alert('Lol I Bims');"required="">
+                            <input id="text_addGender" value="" type="text" name="text_addGender" class="form-control genderText" placeholder="neues Gender adden" required="">
+
+                        </div>
                     </div>
 
                     <div class="">

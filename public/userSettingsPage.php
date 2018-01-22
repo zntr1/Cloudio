@@ -98,6 +98,7 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
                     },
                     settings_email: {
                         required: "Bitte gib ein gültiges Passwort an!",
+                        email: "Bitte gib eine gültige Email-Adresse an!",
                         minlength: jQuery.format("Mindestens {0} Zeichen benötigt!"),
                         maxlength: jQuery.format("Maximal {0} Zeichen erlaubt!"),
                     },
