@@ -11,7 +11,7 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
             $emailAlreadyExistError = "Email existiert bereits!";
         } else if (!$dbFunction->checkUserName($_POST['username'])) {
             $userNameAlreadyExistError = "Benutzername schon vergeben";
-        } else if(!$dbFunction->checkPostalCode($_POST['plz'])) {
+        } else if (!$dbFunction->checkPostalCode($_POST['plz'])) {
             $postalCodeNotFoundError = "Postleitzahl nicht gefunden";
         } else {
             $dbFunction->userRegister($_POST['username'], $_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['password'], $_POST['address'], $_POST['birthday'], $_POST['gender'], $_POST['plz']);
@@ -41,8 +41,8 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
 
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 
 
     <!--    <script src="../jquery.form-validator.min.js"></script>-->
@@ -99,12 +99,12 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                             <span class="input-group-addon"><span class="fa fa-lock fa-lg"></span></span>
                             <input id="registration_password2" type="password" name="submitPassword"
                                    class="form-control" placeholder="Passwort wiederholen"
-                                   data-validation="confirmation"  data-validation-confirm="password"
+                                   data-validation="confirmation" data-validation-confirm="password"
                                    required>
                         </div>
 
                         <div class="g-recaptcha captcha" data-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs">
-<!--                            <input styledata-validation="recaptcha" data-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs" data-validation-recaptcha-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs">-->
+                            <!--                            <input styledata-validation="recaptcha" data-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs" data-validation-recaptcha-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs">-->
 
                         </div>
 
@@ -123,14 +123,16 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-home fa-lg"></span></span>
                             <input id="registration_plz" type="text" name="plz" class="form-control"
-                                   placeholder="Postleitzahl" data-validation="alphanumeric" data-validation-length="1-10"required>
+                                   placeholder="Postleitzahl" data-validation="alphanumeric"
+                                   data-validation-length="1-10" required>
                         </div>
 
 
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-road fa-lg"></span></span>
                             <input id="registration_address" type="text" name="address" class="form-control"
-                                   placeholder="Straße" data-validation="alphanumeric" data-validation-allowing="-_. " data-validation-length="2-50"
+                                   placeholder="Straße" data-validation="alphanumeric" data-validation-allowing="-_. "
+                                   data-validation-length="2-50"
                                    required>
                         </div>
                         <div class="input-group">
@@ -150,20 +152,21 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                                 ?>
                             </select>
                         </div>
-                        <a href="javascript:changeShowAddGenderVisibility();" id="addGenderHref">Ihr Geschlecht ist nicht dabei? Jetzt Geschlecht hinzufügen</a>
+                        <a href="javascript:changeShowAddGenderVisibility();" id="addGenderHref">Ihr Geschlecht ist
+                            nicht dabei? Jetzt Geschlecht hinzufügen</a>
                         <div class="input-group genderText" id="addGenderContainer" style="display:none">
-<!--                            <input id="btn_addGender" value="+" type="button" name="btn_addGender" class="form-control" placeholder="+" onclick="alert('Lol I Bims');"required="">-->
-                            <a href="" onclick="openPhpScript()" id="addGenderGetRequest"><span class="input-group-addon"><i class="fa fa-plus fa-lg"></i></span></a>
-                            <input id="text_addGender" value="" type="text" name="text_addGender" class="form-control genderText" placeholder="Neues Geschlecht eingeben" required="">
-<!--                            <a><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>-->
+                            <a href="" onclick="openPhpScript()" id="addGenderGetRequest"><span
+                                        class="input-group-addon"><i class="fa fa-plus fa-lg"></i></span></a>
+                            <input id="text_addGender" value="" type="text" name="text_addGender"
+                                   class="form-control genderText" placeholder="Neues Geschlecht eingeben" required="">
 
                         </div>
                     </div>
 
                     <div class="">
-                            <div class="">
-                                <input type="submit" value="Registrieren" class="form-control">
-                            </div>
+                        <div class="">
+                            <input type="submit" value="Registrieren" class="form-control">
+                        </div>
 
                         <p class="text--center">Schon registriert? &nbsp;&nbsp;<a style="color: orange;"
                                                                                   href="../public/login.php">Logge
