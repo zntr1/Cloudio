@@ -1,6 +1,7 @@
 <?php
 require_once '../script/dbConfig.php';
 
+$test = "";
 $emailAlreadyExistError = "";
 $userNameAlreadyExistError = "";
 $postalCodeNotFoundError = "";
@@ -149,10 +150,12 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                                 ?>
                             </select>
                         </div>
-
-                        <div class="input-group genderText">
-                            <input id="btn_addGender" value="+" type="button" name="btn_addGender" class="form-control" placeholder="+" onclick="alert('Lol I Bims');"required="">
-                            <input id="text_addGender" value="" type="text" name="text_addGender" class="form-control genderText" placeholder="neues Gender adden" required="">
+                        <a href="javascript:changeShowAddGenderVisibility();" id="addGenderHref">Ihr Geschlecht ist nicht dabei? Jetzt Geschlecht hinzufügen</a>
+                        <div class="input-group genderText" id="addGenderContainer" style="display:none">
+<!--                            <input id="btn_addGender" value="+" type="button" name="btn_addGender" class="form-control" placeholder="+" onclick="alert('Lol I Bims');"required="">-->
+                            <a href="" onclick="openPhpScript()" id="addGenderGetRequest"><span class="input-group-addon"><i class="fa fa-plus fa-lg"></i></span></a>
+                            <input id="text_addGender" value="" type="text" name="text_addGender" class="form-control genderText" placeholder="Neues Geschlecht eingeben" required="">
+<!--                            <a><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>-->
 
                         </div>
                     </div>
@@ -194,5 +197,6 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
         }
     });
 </script>
+<script src="js/showAddGender.js"></script>
 </body>
 </html>
