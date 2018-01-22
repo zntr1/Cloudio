@@ -25,6 +25,8 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
 <head>
     <meta charset="UTF-8">
     <title>Registrierung</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
     <!--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">-->
 
     <!--    <link rel="stylesheet" href="../css/contentStyles.css">-->
