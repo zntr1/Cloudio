@@ -9,16 +9,15 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
     if ($_POST['password'] === $_POST['submitPassword']) {
         if (!$dbFunction->checkMail($_POST['email'])) {
             $emailAlreadyExistError = "Email existiert bereits!";
-        } else if (!$dbFunction->checkUserName($_POST['username'])) {
+        } else if ($dbFunction->checkUserName($_POST['username'])) {
             $userNameAlreadyExistError = "Benutzername schon vergeben";
-        } else if (!$dbFunction->checkPostalCode($_POST['plz'])) {
+        } else if ($dbFunction->checkPostalCode($_POST['plz'])) {
             $postalCodeNotFoundError = "Postleitzahl nicht gefunden";
         } else {
             $dbFunction->userRegister($_POST['username'], $_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['password'], $_POST['address'], $_POST['birthday'], $_POST['gender'], $_POST['plz']);
         }
     }
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -28,25 +27,9 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
     <title>Registrierung</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 
-    <!--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">-->
-
-    <!--    <link rel="stylesheet" href="../css/contentStyles.css">-->
-    <!--    <link rel="stylesheet" href="../css/styles.css">-->
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/registration.css">
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-
-
-    <!--    <script src="../jquery.form-validator.min.js"></script>-->
-
 
 </head>
 
@@ -57,23 +40,15 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
             <div class="registrationDiv">
                 <H5 class="text--center" style="font-size: 40px; margin: 0;"> CLOUDIO LOGO HIER EINFÜGEN</H5>
 
-
                 <form action="register.php" method="POST" class="form login" novalidate>
 
                     <div class="links">
 
-
-<!--                        <div class="input-group">-->
-<!--                            <span class="input-group-addon"><span class=" fa fa-user fa-lg"></span></span>-->
-<!--                            <input id="registration_username" type="text" name="username" class="form-control"-->
-<!--                                   placeholder="Benutzername" data-validation="alphanumeric"-->
-<!--                                   data-validation-allowing="-_" data-validation-length="5-15"-->
-<!--                                   required>-->
-<!--                        </div>-->
                         <div class="input-group">
                             <span class="input-group-addon"><span class=" fa fa-user fa-lg"></span></span>
                             <input id="registration_username" type="text" name="username" class="form-control"
-                                   placeholder="Benutzername" data-validation="server" data-validation-url="../script/validation/validate-username.php">
+                                   placeholder="Benutzername" data-validation="server"
+                                   data-validation-url="../script/validation/validate-username.php">
                         </div>
 
                         <div class="input-group">
@@ -84,7 +59,6 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                                    required>
                         </div>
 
-
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-id-card fa-lg"></span></span>
                             <input id="registration_surName" type="text" name="lastName" class="form-control"
@@ -93,14 +67,13 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                                    required>
                         </div>
 
-
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-lock fa-lg"></span></span>
                             <input id="registration_password" type="password" name="password" class="form-control"
                                    placeholder="Passwort" data-validation="strength" data-validation-strength="2"
-                                   required data-validation-error-msg="Ihr Passwort muss einen Groß- und Kleinbuchstaben, eine Zahl und ein Sonderzeichen enthalten">
+                                   required
+                                   data-validation-error-msg="Ihr Passwort muss einen Groß- und Kleinbuchstaben, eine Zahl und ein Sonderzeichen enthalten">
                         </div>
-
 
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-lock fa-lg"></span></span>
@@ -110,39 +83,21 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                                    data-validation-error-msg="Das Passwort muss mit dem oben genannten Passwort übereinstimmen"
                                    required>
                         </div>
-
-                        <div class="g-recaptcha captcha" data-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs">
-                            <!--                            <input styledata-validation="recaptcha" data-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs" data-validation-recaptcha-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs">-->
-
-                        </div>
-
-
+                        <div class="g-recaptcha captcha" data-sitekey="6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs"></div>
                     </div>
 
                     <div class="rechts">
-
-<!--                        <div class="input-group">-->
-<!--                            <span class="input-group-addon"><span class="fa fa-at fa-lg"></span></span>-->
-<!--                            <input id="registration_email" data-validation="email" name="email" class="form-control"-->
-<!--                                   placeholder="E-Mail" required>-->
-<!--                        </div>-->
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-at fa-lg"></span></span>
-                            <input id="registration_email" type="text" data-validation="server" name="email" class="form-control"
+                            <input id="registration_email" type="text" data-validation="server" name="email"
+                                   class="form-control"
                                    placeholder="E-Mail" data-validation-url="../script/validation/validate-email.php">
                         </div>
-
-
-<!--                        <div class="input-group">-->
-<!--                            <span class="input-group-addon"><span class="fa fa-home fa-lg"></span></span>-->
-<!--                            <input id="registration_plz" type="text" name="plz" class="form-control"-->
-<!--                                   placeholder="Postleitzahl" data-validation="number"-->
-<!--                                   data-validation-length="1-5" required>-->
-<!--                        </div>-->
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-home fa-lg"></span></span>
                             <input id="registration_plz" type="text" name="plz" class="form-control"
-                                   placeholder="Postleitzahl" data-validation="server" data-validation-url="../script/validation/validate-plz.php">
+                                   placeholder="Postleitzahl" data-validation="server"
+                                   data-validation-url="../script/validation/validate-plz.php">
                         </div>
 
 
@@ -150,7 +105,8 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                             <span class="input-group-addon"><span class="fa fa-road fa-lg"></span></span>
                             <input id="registration_address" type="text" name="address" class="form-control"
                                    placeholder="Straße" data-validation="alphanumeric" data-validation-allowing="-_. "
-                                   data-validation-length="2-50" data-validation-error-msg="Bitte geben Sie eine gültige Straße an!"
+                                   data-validation-length="2-50"
+                                   data-validation-error-msg="Bitte geben Sie eine gültige Straße an!"
                                    required>
                         </div>
                         <div class="input-group">
@@ -179,7 +135,7 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
 
                         </div>
                     </div>
-                    <?php echo $error?>
+                    <?php echo $error ?>
 
                     <div class="">
                         <div class="">
@@ -197,6 +153,12 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
         </div>
     </div>
 </div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script src="../public/js/showAddGender.js"></script>
 
 <script>

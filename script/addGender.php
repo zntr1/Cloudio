@@ -6,8 +6,8 @@
  * Time: 12:54
  */
 require_once '../script/dbConfig.php';
-
-
-if (isset($_GET['addGender']) && $_GET('addGender') !== '') {
+$test = isset($_GET['addGender']) === true;
+$test3= $test;
+if (isset($_GET['addGender']) === true) {
     $dbFunction->addGender($_GET['addGender']);
 }

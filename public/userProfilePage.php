@@ -40,7 +40,6 @@ $totalStats = getFolderSize();
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/contentStyles.css">
     <link rel="stylesheet" href="../css/styles.css">
 </head>

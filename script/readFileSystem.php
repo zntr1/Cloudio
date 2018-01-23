@@ -61,31 +61,6 @@ function readFileSystem($fileArray)
             closedir($openFolder);
         }
     }
-//    $counter = 1;
-//    $userName = $_SESSION['userName'];
-//    $path = '../userData/' . $userName . '/';
-//    if ($folder = opendir('../userData/' . $userName . '/')) {
-//        while (false !== ($entry = readdir($folder))) {
-//            if ($entry != "." && $entry != "..") {
-//                clearstatcache();
-//                $date = date("d.m.Y H:i:s", filemtime($path . $entry));
-//
-//                $size = filesize($path . $entry);
-//                $size = formatBytes($size);
-//                echo "<tr>
-//                        <td>$counter</td>
-//                        <td><a href='../script/download.php?file=$entry'>$entry</a></td>
-//                        <td>$date</td>
-//                        <td>$userName</td>
-//                        <td>$size</td>
-//                        <td><a class='fa fa-close fa-lg red' href='../script/deleteFile.php?file=$entry'></a></td>
-//                     </tr>";
-//                $counter++;
-//            }
-//
-//        }
-//        closedir($folder);
-//    }
 }
 
 ?>

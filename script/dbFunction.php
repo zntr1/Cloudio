@@ -16,10 +16,6 @@ class dbFunction
         $this->dbCon = $dbConnection;
 
     }
-//	Die E-Mail muss einem E-Mail Regex entsprechen
-//	Passwort: mindestens 8 Zeichen, ein Kleinbuchstabe, ein Großbuchstabe eine Zahl und ein Sonderzeichen
-    public $emailRegex = "";
-    public $pwRegex = "";
 
     public function userLogin($username, $password)
     {
@@ -161,7 +157,7 @@ class dbFunction
 
         while ($row = $statement->fetch($result)) {
             if ($actualGender !== $row['gender']) {
-                if(!$options) {
+                if (!$options && $actualGender === "") {
                     $options = $options . "<option selected>" . $row['gender'] . "</option>";
                 }
                 $options = $options . "<option>" . $row['gender'] . "</option>";
@@ -208,7 +204,7 @@ class dbFunction
     public function getUserDataForSettings()
     {
         $userId = $_SESSION['userId'];
-        $getUserDataStatement = $this->dbCon->prepare("SELECT firstName,lastName,email,address,postalcode,genderId from tab_user where userId = :userId");
+        $getUserDataStatement = $this->dbCon->prepare("SELECT userName,firstName,lastName,email,address,postalcode,genderId,birthday from tab_user where userId = :userId");
         $getUserDataStatement->bindParam(':userId', $userId);
         $getUserDataResult = $getUserDataStatement->execute();
         $checkGenderFetch = $getUserDataStatement->fetch($getUserDataResult);
@@ -233,7 +229,7 @@ class dbFunction
             $updateUserDataStatement->bindParam(':genderId', $genderId);
             $updateUserDataStatement->bindParam(':postalCode', $postalCode);
             $updateUserDataStatement->execute();
-            header("location: ../public/index.html");
+            header('Location: ' . $_SERVER['REQUEST_URI']);
         }
     }
 
@@ -249,7 +245,7 @@ class dbFunction
             $updatePasswordStatement->bindParam(':userId', $userId);
             $updatePasswordStatement->bindParam(':password', $hashedPassword);
             $updatePasswordStatement->execute();
-            header("location: ../public/index.html");
+            header('Location: ' . $_SERVER['REQUEST_URI']);
         }
     }
 

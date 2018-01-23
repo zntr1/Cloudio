@@ -13,5 +13,4 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
         $dbFunction->userRegister($_POST['username'], $_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['password'], $_POST['address'], $_POST['birthday'], $_POST['gender'], $_POST['plz']);
 }
 
-
 ?>

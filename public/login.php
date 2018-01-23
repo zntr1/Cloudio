@@ -24,23 +24,16 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/login.css">
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 
 </head>
-
-<body>
 <body class="align">
 <div class="container">
     <div class="row">
@@ -50,7 +43,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 <div class="input-group">
                     <span class="input-group-addon"><span class="fa fa-user fa-lg"></span></span>
                     <input id="login__username" type="text" name="username" class="form-control"
-                           placeholder="Benutzername" required data-validation-error-msg="Bitte geben Sie Ihren Benutzernamen ein"
+                           placeholder="Benutzername" required
+                           data-validation-error-msg="Bitte geben Sie Ihren Benutzernamen ein"
                            onfocus="changeErrorVisibility()">
                 </div>
 
@@ -65,10 +59,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     <div class="input-group">
                         <input type="submit" value="Einloggen!">
                     </div>
-                    <p class="text--center">Noch keinen Account? &nbsp;&nbsp;<a style="color: orange;"
-                                                                                href="../public/register.php">Registriere
-                            dich
-                            kostenlos! &nbsp;<i class="fa fa-sign-in fa-lg"></i> </a>
+                    <p class="text--center">Noch keinen Account? &nbsp;&nbsp;
+                        <a style="color: orange;"
+                           href="../public/register.php">Registrier dich kostenlos! &nbsp;<i class="fa fa-sign-in fa-lg"></i> </a>
 
                     </p>
                 </div>
@@ -78,7 +71,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 </div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script type="text/javascript" src="js/showLoginError.js"></script>
 
 
@@ -90,8 +84,5 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         }
     });
 </script>
-</body>
-
-
 </body>
 </html>
