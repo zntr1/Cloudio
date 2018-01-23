@@ -175,7 +175,7 @@ class dbFunction
                 $addGenderStatement->bindParam(':gender', $gender);
                 $addGenderStatement->execute();
             }
-            header("Refresh:0; url=../public/register.php");
+            header("Refresh:0");
         }
     }
 

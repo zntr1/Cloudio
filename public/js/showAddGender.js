@@ -12,6 +12,7 @@ function changeShowAddGenderVisibility() {
 }
 
 function openPhpScript() {
-    var value = document.getElementById('text_addGender').value;;
+    var value = document.getElementById('text_addGender').value;
     $.get("../script/addGender.php?addGender="+value);
+    location.reload();
 }
