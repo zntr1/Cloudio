@@ -1,7 +1,7 @@
 <?php
 require_once '../script/dbConfig.php';
 
-$test = "";
+$error = "";
 $emailAlreadyExistError = "";
 $userNameAlreadyExistError = "";
 $postalCodeNotFoundError = "";
@@ -58,23 +58,29 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                 <H5 class="text--center" style="font-size: 40px; margin: 0;"> CLOUDIO LOGO HIER EINFÜGEN</H5>
 
 
-                <form action="../script/registration.php" method="POST" class="form login">
+                <form action="register.php" method="POST" class="form login" novalidate>
 
                     <div class="links">
 
 
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><span class=" fa fa-user fa-lg"></span></span>-->
+<!--                            <input id="registration_username" type="text" name="username" class="form-control"-->
+<!--                                   placeholder="Benutzername" data-validation="alphanumeric"-->
+<!--                                   data-validation-allowing="-_" data-validation-length="5-15"-->
+<!--                                   required>-->
+<!--                        </div>-->
                         <div class="input-group">
                             <span class="input-group-addon"><span class=" fa fa-user fa-lg"></span></span>
                             <input id="registration_username" type="text" name="username" class="form-control"
-                                   placeholder="Benutzername" data-validation="alphanumeric"
-                                   data-validation-allowing="-_" data-validation-length="5-15"
-                                   required>
+                                   placeholder="Benutzername" data-validation="server" data-validation-url="../script/validation/validate-username.php">
                         </div>
 
                         <div class="input-group">
                             <span class="input-group-addon "><span class="fa fa-id-card fa-lg"></span></span>
                             <input id="registration_firstName" type="text" name="firstName" class="form-control"
                                    placeholder="Vorname" data-validation="length" data-validation-length="min1"
+                                   data-validation-error-msg="Bitte einen Vornamen eingeben"
                                    required>
                         </div>
 
@@ -83,6 +89,7 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                             <span class="input-group-addon"><span class="fa fa-id-card fa-lg"></span></span>
                             <input id="registration_surName" type="text" name="lastName" class="form-control"
                                    placeholder="Nachname" data-validation="length" data-validation-length="min1"
+                                   data-validation-error-msg="Bitte einen Nachnamen eingeben"
                                    required>
                         </div>
 
@@ -91,7 +98,7 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                             <span class="input-group-addon"><span class="fa fa-lock fa-lg"></span></span>
                             <input id="registration_password" type="password" name="password" class="form-control"
                                    placeholder="Passwort" data-validation="strength" data-validation-strength="2"
-                                   required>
+                                   required data-validation-error-msg="Ihr Passwort muss einen Groß- und Kleinbuchstaben, eine Zahl und ein Sonderzeichen enthalten">
                         </div>
 
 
@@ -100,6 +107,7 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                             <input id="registration_password2" type="password" name="submitPassword"
                                    class="form-control" placeholder="Passwort wiederholen"
                                    data-validation="confirmation" data-validation-confirm="password"
+                                   data-validation-error-msg="Das Passwort muss mit dem oben genannten Passwort übereinstimmen"
                                    required>
                         </div>
 
@@ -113,18 +121,28 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
 
                     <div class="rechts">
 
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><span class="fa fa-at fa-lg"></span></span>-->
+<!--                            <input id="registration_email" data-validation="email" name="email" class="form-control"-->
+<!--                                   placeholder="E-Mail" required>-->
+<!--                        </div>-->
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-at fa-lg"></span></span>
-                            <input id="registration_email" type="email" name="email" class="form-control"
-                                   placeholder="E-Mail" required>
+                            <input id="registration_email" type="text" data-validation="server" name="email" class="form-control"
+                                   placeholder="E-Mail" data-validation-url="../script/validation/validate-email.php">
                         </div>
 
 
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-addon"><span class="fa fa-home fa-lg"></span></span>-->
+<!--                            <input id="registration_plz" type="text" name="plz" class="form-control"-->
+<!--                                   placeholder="Postleitzahl" data-validation="number"-->
+<!--                                   data-validation-length="1-5" required>-->
+<!--                        </div>-->
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-home fa-lg"></span></span>
                             <input id="registration_plz" type="text" name="plz" class="form-control"
-                                   placeholder="Postleitzahl" data-validation="alphanumeric"
-                                   data-validation-length="1-10" required>
+                                   placeholder="Postleitzahl" data-validation="server" data-validation-url="../script/validation/validate-plz.php">
                         </div>
 
 
@@ -132,36 +150,36 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                             <span class="input-group-addon"><span class="fa fa-road fa-lg"></span></span>
                             <input id="registration_address" type="text" name="address" class="form-control"
                                    placeholder="Straße" data-validation="alphanumeric" data-validation-allowing="-_. "
-                                   data-validation-length="2-50"
+                                   data-validation-length="2-50" data-validation-error-msg="Bitte geben Sie eine gültige Straße an!"
                                    required>
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-birthday-cake fa-lg"></span></span>
-                            <input id="registration_birthday" value="1939-05-30" type="date" name="birthday"
+                            <input id="registration_birthday" type="date" name="birthday"
                                    class="form-control"
                                    placeholder="Geburtsdatum"
-                                   required>
+                                   required data-validation-error-msg="Bitte geben Sie ein Geburtsdatum an">
                         </div>
 
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-android fa-lg"></span></span>
-                            <select class="form-control" name="gender" value="Joghurt" title="Geschlecht">
-                                <option selected>Dobby</option>
+                            <select class="form-control" name="gender" title="Geschlecht">
                                 <?php
-                                echo $dbFunction->getGenderData($actualGender);
+                                echo $dbFunction->getGenderData("");
                                 ?>
                             </select>
                         </div>
                         <a href="javascript:changeShowAddGenderVisibility();" id="addGenderHref">Ihr Geschlecht ist
                             nicht dabei? Jetzt Geschlecht hinzufügen</a>
-                        <div class="input-group genderText" id="addGenderContainer" style="display:none">
+                        <div class="input-group" id="addGenderContainer" style="display:none">
                             <a href="" onclick="openPhpScript()" id="addGenderGetRequest"><span
                                         class="input-group-addon"><i class="fa fa-plus fa-lg"></i></span></a>
                             <input id="text_addGender" value="" type="text" name="text_addGender"
-                                   class="form-control genderText" placeholder="Neues Geschlecht eingeben" required="">
+                                   class="form-control genderText" placeholder="Neues Geschlecht eingeben">
 
                         </div>
                     </div>
+                    <?php echo $error?>
 
                     <div class="">
                         <div class="">
@@ -170,7 +188,7 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
 
                         <p class="text--center">Schon registriert? &nbsp;&nbsp;<a style="color: orange;"
                                                                                   href="../public/login.php">Logge
-                                dich ein! &nbsp;<i class="fa fa-sign-in fa-lg"></i> </a>
+                                dich ein! &nbsp;<i class="fa fa-sign-in fa-lg"></i></a>
 
                         </p>
                     </div>
@@ -179,17 +197,18 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
         </div>
     </div>
 </div>
+<script src="../public/js/showAddGender.js"></script>
 
 <script>
     $.validate({
         reCaptchaSiteKey: '6LeWYEEUAAAAAMC4EhCyqA5j5AYFkusY9pdGpQqs',
         reCaptchaTheme: 'dark',
-        modules: 'security',
+        modules: 'security, html5',
         onModulesLoaded: function () {
             var optionalConfig = {
                 fontSize: '12pt',
                 padding: '4px',
-                width: '100%',
+                width: '25%',
                 bad: 'Schlecht',
                 weak: 'Schwach',
                 good: 'Gut',
@@ -200,6 +219,5 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
         }
     });
 </script>
-<script src="js/showAddGender.js"></script>
 </body>
 </html>

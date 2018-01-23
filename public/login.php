@@ -13,7 +13,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     if ($dbFunction->userLogin($_POST['username'], $_POST['password'])) {
         header("location: ../public/index.html");
     } else {
-        $userNamePasswordError = "Benutzername oder Passwort nicht korrekt";
+        $userNamePasswordError = "<span class='text--center long' id='errorSpan' style='color:red;''>Benutzername oder Passwort nicht korrekt</span>";
     }
 
 }
@@ -46,19 +46,20 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <div class="row">
         <div class="registrationDiv">
             <H5 class="text--center" style="font-size: 40px; margin: 0;"> CLOUDIO LOGO </H5>
-            <form action="login.php" method="POST" class="form login" id="loginForm">
+            <form action="login.php" method="POST" class="form login" id="loginForm" novalidate>
                 <div class="input-group">
                     <span class="input-group-addon"><span class="fa fa-user fa-lg"></span></span>
                     <input id="login__username" type="text" name="username" class="form-control"
-                           placeholder="Benutzername" required>
+                           placeholder="Benutzername" required data-validation-error-msg="Bitte geben Sie Ihren Benutzernamen ein"
+                           onfocus="changeErrorVisibility()">
                 </div>
 
                 <div class="input-group">
                     <span class="input-group-addon"><span class=" fa fa-lock fa-lg"></span></span>
                     <input id="login__password" type="password" name="password" class="form-control"
-                           placeholder="Passwort" required>
+                           placeholder="Passwort" required data-validation-error-msg="Bitte geben Sie ihr Passwort ein">
                 </div>
-                <span class="text--center long" style="color:red;"><?php echo $userNamePasswordError; ?></span>
+                <?php echo $userNamePasswordError; ?>
 
                 <div class="unten">
                     <div class="input-group">
@@ -78,8 +79,17 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script type="text/javascript" src="js/showLoginError.js"></script>
 
 
+<script>
+    $.validate({
+        modules: 'html5',
+        onModulesLoaded: function () {
+
+        }
+    });
+</script>
 </body>
 
 

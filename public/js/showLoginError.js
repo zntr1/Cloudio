@@ -1,0 +1,3 @@
+function changeErrorVisibility() {
+    $('#errorSpan').remove();
+}

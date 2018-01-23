@@ -71,12 +71,16 @@ input[type='text'],
 input[type='password'],
 input[type='email'],
 input[type='date'],
-select,
+select option,
 input[type='submit'] {
     color: white;
     border-radius: 0.25rem;
-
     background-color: #3b4148 ;
+}
+select {
+    color: white;
+    border-radius: 0.25rem;
+    background: transparent;
 }
 input[type='submit']{
     background-color: orange;

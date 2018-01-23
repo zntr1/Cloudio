@@ -161,6 +161,9 @@ class dbFunction
 
         while ($row = $statement->fetch($result)) {
             if ($actualGender !== $row['gender']) {
+                if(!$options) {
+                    $options = $options . "<option selected>" . $row['gender'] . "</option>";
+                }
                 $options = $options . "<option>" . $row['gender'] . "</option>";
             }
         }

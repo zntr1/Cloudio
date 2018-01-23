@@ -8,7 +8,6 @@
 require_once '../script/dbConfig.php';
 
 
-if (isset($_GET['addGender'])) {
+if (isset($_GET['addGender']) && $_GET('addGender') !== '') {
     $dbFunction->addGender($_GET['addGender']);
-
 }
