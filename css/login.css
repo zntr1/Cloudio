@@ -112,6 +112,9 @@ label {
     position: relative;
 }
 
+img{
+    margin-bottom: 0;
+}
 
 .unten{
     /*position: absolute;*/
@@ -123,7 +126,8 @@ label {
 }
 
 form {
-
+    position: relative;
+    top: -7vh;
     /*display: inline;*/
     /*max-width: 50vw;*/
     /*max-heigth: 50vh;*/
