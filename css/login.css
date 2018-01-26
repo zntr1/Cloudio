@@ -124,6 +124,10 @@ img{
     width: 100%;
     bottom: 0;
 }
+.registrationDiv{
+    position: relative;
+    top: -10vh;
+}
 
 form {
     position: relative;
