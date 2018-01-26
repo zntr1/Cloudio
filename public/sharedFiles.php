@@ -35,12 +35,7 @@ foreach ($sharedFiles as $file) {
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Freigabe</h3>
-                        <div class="pull-right">
-							<span class="clickable filter" data-toggle="tooltip" title="" data-container="body"
-                                  data-original-title="Toggle table filter">
-								<i class="fa fa-filter"></i>
-							</span>
-                        </div>
+                      
                     </div>
                     <div class="panel-body">
                         <input type="text" class="form-control" id="dev-table-filter" data-action="filter"
