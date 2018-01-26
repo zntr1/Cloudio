@@ -75,6 +75,7 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
                                    data-validation-error-msg="Ihr Passwort muss einen Groß- und Kleinbuchstaben, eine Zahl und ein Sonderzeichen enthalten">
                         </div>
 
+
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-lock fa-lg"></span></span>
                             <input id="registration_password2" type="password" name="submitPassword"

@@ -78,10 +78,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 <script>
     $.validate({
-        modules: 'html5',
-        onModulesLoaded: function () {
-
-        }
+        modules: 'html5'
     });
 </script>
 </body>
