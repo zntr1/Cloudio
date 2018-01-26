@@ -108,7 +108,7 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
                                placeholder="Altes Passwort bestätigen">
                     </div>
                     <div class="">
-                        <input type="submit" value="Ändern!" class="form-control">
+                        <input id="changeSettingsBtn" type="submit" value="Ändern!" class="form-control">
                     </div>
                 </form>
             </div>

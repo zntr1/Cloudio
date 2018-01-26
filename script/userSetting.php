@@ -14,3 +14,5 @@ if (isset($_POST['settings_firstName']) && isset($_POST['settings_surName']) && 
 if (isset($_POST['settings_oldPassword']) && isset($_POST['settings_password']) && isset($_POST['settings_password2']) && $_POST['settings_password'] !== '') {
     $dbFunction->updatePassword($_POST['settings_oldPassword'], $_POST['settings_password']);
 }
+
+header('Location: ../public/userSettingsPage.php');

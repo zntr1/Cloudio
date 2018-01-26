@@ -68,24 +68,24 @@ $().ready(function () {
                 maxlength: jQuery.format("Maximal {0} Zeichen erlaubt!")
             },
             settings_password2: {
-                required: "Bitte gib ein gültiges Passwort an!",
+                required: "Bitte wiederhole dein neues Passwort!",
                 minlength: jQuery.format("Mindestens {0} Zeichen benötigt!"),
                 maxlength: jQuery.format("Maximal {0} Zeichen erlaubt!"),
                 equalTo: "#settings_password"
             },
             settings_email: {
-                required: "Bitte gib ein gültiges Passwort an!",
+                required: "Bitte gib eine gültige Email an!",
                 email: "Bitte gib eine gültige Email-Adresse an!",
                 minlength: jQuery.format("Mindestens {0} Zeichen benötigt!"),
                 maxlength: jQuery.format("Maximal {0} Zeichen erlaubt!")
             },
             settings_plz: {
-                required: "Bitte gib ein gültiges Passwort an!",
+                required: "Bitte gib ein gültige PLZ an!",
                 minlength: jQuery.format("Mindestens {0} Zeichen benötigt!"),
                 maxlength: jQuery.format("Maximal {0} Zeichen erlaubt!")
             },
             settings_address: {
-                required: "Bitte gib ein gültiges Passwort an!",
+                required: "Bitte gib eine gültige Adresse an!",
                 minlength: jQuery.format("Mindestens {0} Zeichen benötigt!"),
                 maxlength: jQuery.format("Maximal {0} Zeichen erlaubt!")
             },
@@ -123,6 +123,5 @@ $().ready(function () {
         }
 
     });
-
 
 });
