@@ -3,12 +3,10 @@ $().ready(function () {
         rules: {
             settings_firstName: {
                 required: true,
-                minlength: 2,
                 maxlength: 25
             },
             settings_surName: {
                 required: true,
-                minlength: 2,
                 maxlength: 25
             },
 
