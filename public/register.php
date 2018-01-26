@@ -38,7 +38,7 @@ if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['use
     <div class="container">
         <div class="row">
             <div class="registrationDiv">
-                <H5 class="text--center" style="font-size: 40px; margin: 0;"> CLOUDIO LOGO HIER EINFÜGEN</H5>
+                <H5 class="text--center" style="font-size: 40px; margin: 0;"> <img src='../logo.png' height="300px" width="300px"/></H5>
 
                 <form action="register.php" method="POST" class="form login" novalidate>
 

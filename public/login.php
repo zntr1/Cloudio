@@ -38,7 +38,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 <div class="container">
     <div class="row">
         <div class="registrationDiv">
-            <H5 class="text--center" style="font-size: 40px; margin: 0;"> CLOUDIO LOGO </H5>
+            <H5 class="text--center" style="font-size: 40px; margin: 0;"> <img src='../logo.png' height="200px" width="200px"/> </H5>
             <form action="login.php" method="POST" class="form login" id="loginForm" novalidate>
                 <div class="input-group">
                     <span class="input-group-addon"><span class="fa fa-user fa-lg"></span></span>
