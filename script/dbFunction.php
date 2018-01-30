@@ -159,8 +159,10 @@ class dbFunction
             if ($actualGender !== $row['gender']) {
                 if (!$options && $actualGender === "") {
                     $options = $options . "<option selected>" . $row['gender'] . "</option>";
+                } else{
+                    $options = $options . "<option>" . $row['gender'] . "</option>";
                 }
-                $options = $options . "<option>" . $row['gender'] . "</option>";
+
             }
         }
         return $options;
@@ -352,8 +354,23 @@ class dbFunction
             $folderId = $_SESSION['folderId'];
             $fileId = $this->getFileId($fileName, $folderId);
             $userId = $this->getUserIdByUsername($shareUser);
-            $insertShareFileStatement = $this->dbCon->prepare("INSERT INTO tab_file_has_tab_user  (tab_file_fileId, tab_user_userId) VALUES ($fileId,$userId)");
-            $insertShareFileStatement->execute();
+            if(!$this->fileAreadyShared($fileId,$userId)) {
+                $insertShareFileStatement = $this->dbCon->prepare("INSERT INTO tab_file_has_tab_user  (tab_file_fileId, tab_user_userId) VALUES ($fileId,$userId)");
+                $insertShareFileStatement->execute();
+            }
+        }
+    }
+
+    public function fileAlreadyShared($fileId,$userId) {
+        $fileAlreadySharedStatement = $this->dbCon->prepare("SELECT * FROM tab_file_has_tab_user where tab_file_fileId = :fileId AND tab_user_userId = :userId");
+        $fileAlreadySharedStatement->bindParam(':userId', $userId);
+        $fileAlreadySharedStatement->bindParam(':fileId', $fileId);
+        $fileAlreadySharedResult = $fileAlreadySharedStatement->execute();
+        $fileAlreadySharedFetch = $fileAlreadySharedStatement->fetch($fileAlreadySharedResult);
+        if ($fileAlreadySharedFetch) {
+            return true;
+        } else {
+            return false;
         }
     }
 

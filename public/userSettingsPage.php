@@ -41,7 +41,7 @@ $actualGender = $dbFunction->getGenderById($userData['genderId']);
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-id-card fa-lg"></span></span>
                             <input id="settings_surName" type="text" name="settings_surName" class="form-control"
-                                   placeholder="Nachname" value="<?php echo $userData['firstName'] ?>">
+                                   placeholder="Nachname" value="<?php echo $userData['lastName'] ?>">
                         </div>
 
 
