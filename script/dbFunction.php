@@ -354,7 +354,7 @@ class dbFunction
             $folderId = $_SESSION['folderId'];
             $fileId = $this->getFileId($fileName, $folderId);
             $userId = $this->getUserIdByUsername($shareUser);
-            if(!$this->fileAreadyShared($fileId,$userId)) {
+            if(!$this->fileAlreadyShared($fileId,$userId)) {
                 $insertShareFileStatement = $this->dbCon->prepare("INSERT INTO tab_file_has_tab_user  (tab_file_fileId, tab_user_userId) VALUES ($fileId,$userId)");
                 $insertShareFileStatement->execute();
             }
